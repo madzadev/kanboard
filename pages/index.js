@@ -1,8 +1,19 @@
+import { useState, useEffect } from "react";
 import Head from "next/head";
-import Image from "next/image";
 import styles from "../styles/Home.module.css";
+import api from "../lib/appwrite";
 
 export default function Home() {
+  const [projects, setProjects] = useState([]);
+  useEffect(() => {
+    api
+      .listDocuments(process.env.NEXT_PUBLIC_APPWRITE_PROJECT_COLLECTION)
+      .then((response) => {
+        // console.log(response);
+        setProjects([...response.documents.reverse()]);
+      });
+  }, []);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -12,6 +23,14 @@ export default function Home() {
       </Head>
 
       <h1>Appwrite app</h1>
+      {projects.map((article, index) => {
+        return (
+          <div key={index}>
+            <h1>{article.title}</h1>
+            <p>{article.description}</p>
+          </div>
+        );
+      })}
     </div>
   );
 }
