@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useState, useContext } from "react";
 import { useForm } from "react-hook-form";
 
@@ -36,6 +37,9 @@ const SignUp = () => {
         {errors.password && <span>Enter a valid password</span>}
         <input type="submit" />
       </form>
+      <Link href="/">
+        <h2>Back home</h2>
+      </Link>
     </div>
   );
 };

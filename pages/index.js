@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useState, useEffect, useContext } from "react";
 // import { AuthContext } from "./context/Auth.context.js";
 import Head from "next/head";
@@ -15,6 +16,12 @@ export default function Home() {
       </Head>
 
       <h1>Appwrite app</h1>
+      <Link href="/signup">
+        <h2>Sign Up</h2>
+      </Link>
+      <Link href="/login">
+        <h2>Log In</h2>
+      </Link>
     </div>
   );
 }
