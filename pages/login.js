@@ -15,8 +15,8 @@ const Login = () => {
     const { email, password } = data;
     try {
       await api.login(email, password);
-    } catch (error) {
-      console.log(error.message);
+    } catch (err) {
+      console.log(err.message);
     }
   };
   return (
