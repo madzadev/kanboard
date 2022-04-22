@@ -1,28 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+// import { AuthContext } from "./context/Auth.context.js";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import api from "../lib/appwrite";
 
 export default function Home() {
-  const [projects, setProjects] = useState([]);
-  useEffect(() => {
-    api
-      .listDocuments(process.env.NEXT_PUBLIC_APPWRITE_PROJECT_COLLECTION)
-      .then((response) => {
-        // console.log(response);
-        setProjects([...response.documents.reverse()]);
-      });
-  }, []);
-
-  const createUser = () => {
-    api
-      .createUser("unique()", "madzaa@li.lv", "1a2345678", "Madzaa")
-      .then((response) => {
-        console.log(response);
-        // setProjects([...response.documents.reverse()]);
-      });
-  };
-
+  // const { state } = useContext(AuthContext);
   return (
     <div className={styles.container}>
       <Head>
@@ -32,15 +15,6 @@ export default function Home() {
       </Head>
 
       <h1>Appwrite app</h1>
-      {projects.map((article, index) => {
-        return (
-          <div key={index}>
-            <h1>{article.title}</h1>
-            <p>{article.description}</p>
-          </div>
-        );
-      })}
-      <button onClick={createUser}>Create user</button>
     </div>
   );
 }
