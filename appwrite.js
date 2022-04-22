@@ -14,4 +14,23 @@ export const api = {
       throw error;
     }
   },
+  login: async (mail, pass) => {
+    try {
+      await sdk.account.createSession(mail, pass);
+      const user = await api.getAccount();
+      //   state.update((n) => {
+      //     n.user = user;
+      //     return n;
+      //   });
+      console.log(`Got user: ${user.name}`);
+    } catch (error) {
+      //   state.update((n) => {
+      //     n.user = null;
+      //     return n;
+      //   });
+      console.log(`No user found`);
+      throw error;
+    }
+  },
+  getAccount: async () => sdk.account.get(),
 };

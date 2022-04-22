@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import { useForm } from "react-hook-form";
 
 import { UserContext } from "../context/user.js";
+import { api } from "../appwrite";
 
 const Login = () => {
   const {
@@ -10,16 +11,21 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    const { email, password } = data;
+    try {
+      await api.login(email, password);
+    } catch (error) {
+      console.log(error.message);
+    }
   };
   return (
     <div>
       <h1>Please Log In</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <input {...register("email", { required: true, maxLength: 20 })} />
+        <input {...register("email", { required: true })} />
         {errors.email && <span>Enter a valid email</span>}
-        <input {...register("password", { pattern: /^[A-Za-z]+$/i })} />
+        <input {...register("password", { required: true })} />
         {errors.password && <span>Enter a valid password</span>}
 
         <input type="submit" />
