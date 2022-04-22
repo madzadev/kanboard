@@ -14,6 +14,15 @@ export default function Home() {
       });
   }, []);
 
+  const createUser = () => {
+    api
+      .createUser("unique()", "madzaa@li.lv", "1a2345678", "Madzaa")
+      .then((response) => {
+        console.log(response);
+        // setProjects([...response.documents.reverse()]);
+      });
+  };
+
   return (
     <div className={styles.container}>
       <Head>
@@ -31,6 +40,7 @@ export default function Home() {
           </div>
         );
       })}
+      <button onClick={createUser}>Create user</button>
     </div>
   );
 }
