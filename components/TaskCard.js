@@ -5,9 +5,9 @@ import dynamic from "next/dynamic";
 // });
 import styles from "./TaskCard.module.css";
 
-const TaskCard = ({ item, index }) => {
+const TaskCard = ({ key, item, index }) => {
   return (
-    <Draggable draggableId={item} index={index}>
+    <Draggable key={key} draggableId={item.id.toString()} index={index}>
       {(provided) => (
         <div
           ref={provided.innerRef}

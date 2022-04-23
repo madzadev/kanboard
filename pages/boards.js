@@ -15,6 +15,7 @@
 // };
 
 // export default Boards;
+import { GetServerSideProps } from "next";
 import dynamic from "next/dynamic";
 import { useState } from "react";
 import { useRecoilState } from "recoil";
@@ -22,7 +23,11 @@ import { userState } from "../store/user";
 
 import AuthWrapper from "../components/AuthWrapper";
 
-import { DragDropContext, Droppable } from "react-beautiful-dnd";
+import {
+  DragDropContext,
+  Droppable,
+  resetServerContext,
+} from "react-beautiful-dnd";
 // const { DragDropContext, Droppable } = dynamic(
 //   () => import("react-beautiful-dnd"),
 //   {
@@ -37,9 +42,10 @@ const TaskCard = dynamic(() => import("../components/TaskCard"), {
 
 import styles from "../styles/Boards.module.css";
 
-const Boards = () => {
+const Boards = ({ data }) => {
   const [user, setUser] = useRecoilState(userState);
   const [columns, setColumns] = useState(columns1);
+  console.log(data);
 
   const onDragEnd = (result, columns, setColumns) => {
     if (!result.destination) return;
@@ -84,7 +90,7 @@ const Boards = () => {
         <div className={styles.wrapper}>
           <div className={styles.column}>
             {Object.entries(columns).map(([columnId, column], index) => {
-              console.log(columnId, column, index);
+              console.log("Columns = ", columnId, column, index);
               return (
                 <Droppable key={columnId} droppableId={columnId}>
                   {(provided, snapshot) => (
@@ -97,7 +103,7 @@ const Boards = () => {
                       {column.items.map((item, index) => {
                         console.log(item, index);
                         return (
-                          <TaskCard key={item} item={item} index={index} />
+                          <TaskCard key={item.id} item={item} index={index} />
                         );
                       })}
                       {provided.placeholder}
@@ -112,5 +118,12 @@ const Boards = () => {
     </AuthWrapper>
   );
 };
+
+export async function getServerSideProps(context) {
+  resetServerContext();
+  return {
+    props: { data: [] }, // will be passed to the page component as props
+  };
+}
 
 export default Boards;
