@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
 import { userState } from "../store/user";
@@ -9,9 +10,12 @@ const AuthWrapper = ({ children }) => {
   const [user, setUser] = useRecoilState(userState);
   const router = useRouter();
 
-  if (!user) {
-    router.push("/");
-  }
+  useEffect(() => {
+    if (!user) {
+      router.push("/");
+    }
+  }, []);
+
   return (
     <div>
       <Header />
