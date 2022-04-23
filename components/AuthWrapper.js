@@ -10,7 +10,8 @@ import Footer from "../components/Footer";
 import styles from "./AuthWrapper.module.css";
 
 const AuthWrapper = ({ children }) => {
-  const [user, setUser] = useRecoilState(userState);
+  //   const [user, setUser] = useRecoilState(userState);
+  const user = "Madza";
   const router = useRouter();
 
   useEffect(() => {
