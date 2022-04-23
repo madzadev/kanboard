@@ -1,11 +1,7 @@
-import { Draggable } from "react-beautiful-dnd";
-import dynamic from "next/dynamic";
-// const { Draggable } = dynamic(() => import("react-beautiful-dnd"), {
-//   ssr: false,
-// });
+import { Draggable, resetServerContext } from "react-beautiful-dnd";
 import styles from "./TaskCard.module.css";
 
-const TaskCard = ({ key, item, index }) => {
+const TaskCard = ({ key, item, index, data }) => {
   return (
     <Draggable key={key} draggableId={item.id.toString()} index={index}>
       {(provided) => (
@@ -32,5 +28,10 @@ const TaskCard = ({ key, item, index }) => {
     </Draggable>
   );
 };
+
+export async function getServerSideProps(context) {
+  resetServerContext();
+  return { props: { data: [] } };
+}
 
 export default TaskCard;
