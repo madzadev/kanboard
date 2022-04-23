@@ -1,5 +1,6 @@
 .wrapper {
     display: grid;
     grid-template-columns: auto 100px;
-    background-color:beige
+    background-color:white;
+    padding: 10px 20px;
 }

@@ -4,7 +4,7 @@ import styles from "./Header.module.css";
 const Header = () => {
   return (
     <div className={styles.wrapper}>
-      <h1>My Kanban app</h1>
+      <h2>Logo</h2>
       <LogOut />
     </div>
   );

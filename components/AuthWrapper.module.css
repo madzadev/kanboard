@@ -1,3 +1,5 @@
-/* .wrapper {
-    padding: 20px;
-} */
+.wrapper {
+    position: relative;
+  min-height: 100vh;
+  background-color:#F5F4F7
+}
