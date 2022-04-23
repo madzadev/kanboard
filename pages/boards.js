@@ -15,16 +15,25 @@
 // };
 
 // export default Boards;
-
+import dynamic from "next/dynamic";
 import { useState } from "react";
 import { useRecoilState } from "recoil";
 import { userState } from "../store/user";
 
 import AuthWrapper from "../components/AuthWrapper";
 
-import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
+// const { DragDropContext, Droppable } = dynamic(
+//   () => import("react-beautiful-dnd"),
+//   {
+//     ssr: false,
+//   }
+// );
 import { columns1 } from "../data/kanban";
-import TaskCard from "../components/TaskCard";
+// import TaskCard from "../components/TaskCard";
+const TaskCard = dynamic(() => import("../components/TaskCard"), {
+  ssr: false,
+});
 
 import styles from "../styles/Boards.module.css";
 
@@ -75,6 +84,7 @@ const Boards = () => {
         <div className={styles.wrapper}>
           <div className={styles.column}>
             {Object.entries(columns).map(([columnId, column], index) => {
+              console.log(columnId, column, index);
               return (
                 <Droppable key={columnId} droppableId={columnId}>
                   {(provided, snapshot) => (
@@ -84,9 +94,12 @@ const Boards = () => {
                       {...provided.droppableProps}
                     >
                       <div className={styles.title}>{column.title}</div>
-                      {column.items.map((item, index) => (
-                        <TaskCard key={item} item={item} index={index} />
-                      ))}
+                      {column.items.map((item, index) => {
+                        console.log(item, index);
+                        return (
+                          <TaskCard key={item} item={item} index={index} />
+                        );
+                      })}
                       {provided.placeholder}
                     </div>
                   )}

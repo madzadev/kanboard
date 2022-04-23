@@ -1,9 +1,13 @@
 import { Draggable } from "react-beautiful-dnd";
+import dynamic from "next/dynamic";
+// const { Draggable } = dynamic(() => import("react-beautiful-dnd"), {
+//   ssr: false,
+// });
 import styles from "./TaskCard.module.css";
 
 const TaskCard = ({ item, index }) => {
   return (
-    <Draggable key={item.id} draggableId={item.id.toString()} index={index}>
+    <Draggable draggableId={item} index={index}>
       {(provided) => (
         <div
           ref={provided.innerRef}
