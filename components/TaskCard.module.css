@@ -11,6 +11,7 @@
       isDragging ? 'rgba(255, 59, 59, 0.15)' : 'white'}; */
     background: white;
     margin-top: 15px;
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
 }
 
 .details {

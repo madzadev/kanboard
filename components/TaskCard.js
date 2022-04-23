@@ -9,19 +9,18 @@ const TaskCard = ({ key, item, index, data }) => {
           ref={provided.innerRef}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
+          className={styles.wrapper}
         >
-          <div className={styles.wrapper}>
-            <p>{item.Task}</p>
-            <div className={styles.details}>
-              <p>
-                <span>
-                  {new Date(item.Due_Date).toLocaleDateString("en-us", {
-                    month: "short",
-                    day: "2-digit",
-                  })}
-                </span>
-              </p>
-            </div>
+          <p>{item.Task}</p>
+          <div className={styles.details}>
+            <p>
+              <span>
+                {new Date(item.Due_Date).toLocaleDateString("en-us", {
+                  month: "short",
+                  day: "2-digit",
+                })}
+              </span>
+            </p>
           </div>
         </div>
       )}
