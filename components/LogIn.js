@@ -29,7 +29,17 @@ const Login = () => {
         emailVerification,
         prefs,
       } = login;
-      setUser(name);
+      setUser([
+        ...user,
+        $id,
+        name,
+        registration,
+        status,
+        passwordUpdate,
+        // email,
+        emailVerification,
+        // prefs,
+      ]);
       router.push("/boards");
     } catch (err) {
       console.log(err.message);

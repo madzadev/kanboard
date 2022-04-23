@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { useEffect } from "react";
 import LogIn from "../components/LogIn";
 
@@ -7,8 +8,9 @@ import { userState } from "../store/user";
 
 export default function Home() {
   const [user, setUser] = useRecoilState(userState);
+  const router = useRouter();
   useEffect(() => {
-    if (user) {
+    if (user.name) {
       router.push("/boards");
     }
   }, []);

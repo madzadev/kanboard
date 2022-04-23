@@ -10,8 +10,29 @@ import Footer from "../components/Footer";
 import styles from "./AuthWrapper.module.css";
 
 const AuthWrapper = ({ children }) => {
-  //   const [user, setUser] = useRecoilState(userState);
-  const user = "Madza";
+  const [user, setUser] = useRecoilState(userState);
+  //   const [
+  //     $id,
+  //     name,
+  //     registration,
+  //     status,
+  //     passwordUpdate,
+  //     email,
+  //     emailVerification,
+  //     prefs,
+  //   ] = user;
+  //   console.log(
+  //     $id,
+  //     name,
+  //     registration,
+  //     status,
+  //     passwordUpdate,
+  //     email,
+  //     emailVerification,
+  //     prefs
+  //   );
+  console.log(user);
+  //   const user = "Madza";
   const router = useRouter();
 
   useEffect(() => {
