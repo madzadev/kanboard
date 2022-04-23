@@ -1,0 +1,17 @@
+.wrapper {
+    min-width: 500px;
+}
+
+.title {
+    margin-bottom: 20px;
+}
+
+.form {
+    display:grid;
+/* border: 1px solid green; */
+}
+
+.input {
+    height:30px;
+    margin-bottom: 20px;
+}

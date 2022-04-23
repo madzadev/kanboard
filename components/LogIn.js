@@ -5,6 +5,8 @@ import { useRecoilState } from "recoil";
 import { userState } from "../store/user";
 import { api } from "../appwrite";
 
+import styles from "./LogIn.module.css";
+
 const Login = () => {
   const [user, setUser] = useRecoilState(userState);
   const router = useRouter();
@@ -46,12 +48,18 @@ const Login = () => {
     }
   };
   return (
-    <div>
-      <h1>Please Log In</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <input {...register("email", { required: true })} />
+    <div className={styles.wrapper}>
+      <h1 className={styles.title}>Please Log In</h1>
+      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+        <input
+          {...register("email", { required: true })}
+          className={styles.input}
+        />
         {errors.email && <span>Enter a valid email</span>}
-        <input {...register("password", { required: true })} />
+        <input
+          {...register("password", { required: true })}
+          className={styles.input}
+        />
         {errors.password && <span>Enter a valid password</span>}
 
         <input type="submit" />
