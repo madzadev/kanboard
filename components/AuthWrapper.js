@@ -6,6 +6,8 @@ import { userState } from "../store/user";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
+import styles from "./AuthWrapper.module.css";
+
 const AuthWrapper = ({ children }) => {
   const [user, setUser] = useRecoilState(userState);
   const router = useRouter();

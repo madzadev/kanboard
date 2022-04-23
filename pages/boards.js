@@ -10,7 +10,6 @@ const Boards = () => {
   return (
     <AuthWrapper>
       <h1>Welcome, {user}!</h1>
-      <LogOut />
     </AuthWrapper>
   );
 };
