@@ -1,12 +1,11 @@
 import Link from "next/link";
-import { useState, useEffect, useContext } from "react";
-// import { AuthContext } from "./context/Auth.context.js";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import api from "../lib/appwrite";
+import { useRecoilState } from "recoil";
+import { userState } from "../store/user";
 
 export default function Home() {
-  // const { state } = useContext(AuthContext);
+  const [user, setUser] = useRecoilState(userState);
   return (
     <div className={styles.container}>
       <Head>
@@ -22,6 +21,7 @@ export default function Home() {
       <Link href="/login">
         <h2>Log In</h2>
       </Link>
+      <h1>{user}</h1>
     </div>
   );
 }

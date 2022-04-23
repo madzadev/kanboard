@@ -18,11 +18,13 @@ export const api = {
     try {
       await sdk.account.createSession(mail, pass);
       const user = await api.getAccount();
+      console.log(`Got user: ${user.name}`);
+      return user;
+      //   setUser(user);
       //   state.update((n) => {
       //     n.user = user;
       //     return n;
       //   });
-      console.log(`Got user: ${user.name}`);
     } catch (error) {
       //   state.update((n) => {
       //     n.user = null;

@@ -1,13 +1,20 @@
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { useState, useContext } from "react";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
-
-import { UserContext } from "../context/user.js";
+import { useRecoilState } from "recoil";
 import { api } from "../appwrite";
+import { userState } from "../store/user";
 
 const Login = () => {
+  const [aa, setAa] = useState(0);
+  const [user, setUser] = useRecoilState(userState);
   const router = useRouter();
+
+  useEffect(() => {
+    setAa("111111");
+  }, []);
+
   const {
     register,
     handleSubmit,
@@ -17,7 +24,19 @@ const Login = () => {
   const onSubmit = async (data) => {
     const { email, password } = data;
     try {
-      await api.login(email, password);
+      const login = await api.login(email, password);
+      const {
+        $id,
+        name,
+        registration,
+        status,
+        passwordUpdate,
+        // email,
+        emailVerification,
+        prefs,
+      } = login;
+      setUser(name);
+
       router.push("/");
     } catch (err) {
       console.log(err.message);
