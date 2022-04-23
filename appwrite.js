@@ -35,4 +35,11 @@ export const api = {
     }
   },
   getAccount: async () => sdk.account.get(),
+  logout: async () => {
+    try {
+      await sdk.account.deleteSession("current");
+    } catch (error) {
+      throw error;
+    }
+  },
 };

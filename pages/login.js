@@ -47,8 +47,9 @@ const Login = () => {
 
         <input type="submit" />
       </form>
-      <Link href="/">
-        <h2>Back home</h2>
+      <h3>Do not have an account?</h3>
+      <Link href="/signup">
+        <h2>Register</h2>
       </Link>
     </div>
   );
