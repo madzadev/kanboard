@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
@@ -7,13 +6,8 @@ import { api } from "../appwrite";
 import { userState } from "../store/user";
 
 const Login = () => {
-  const [aa, setAa] = useState(0);
   const [user, setUser] = useRecoilState(userState);
   const router = useRouter();
-
-  useEffect(() => {
-    setAa("111111");
-  }, []);
 
   const {
     register,
