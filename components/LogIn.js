@@ -2,8 +2,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { useRecoilState } from "recoil";
-import { api } from "../appwrite";
 import { userState } from "../store/user";
+import { api } from "../appwrite";
 
 const Login = () => {
   const [user, setUser] = useRecoilState(userState);
@@ -30,7 +30,6 @@ const Login = () => {
         prefs,
       } = login;
       setUser(name);
-
       router.push("/boards");
     } catch (err) {
       console.log(err.message);

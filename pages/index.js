@@ -9,13 +9,11 @@ export default function Home() {
   const [user, setUser] = useRecoilState(userState);
   return (
     <div className={styles.container}>
-      {!user ? (
+      {!user && (
         <>
           <h1>Appwrite Kanban</h1>
           <LogIn />
         </>
-      ) : (
-        <h1>{user}</h1>
       )}
     </div>
   );
