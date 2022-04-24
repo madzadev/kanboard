@@ -27,17 +27,34 @@ const TaskCard = dynamic(() => import("../components/TaskCard"), {
   ssr: false,
 });
 
+import { api } from "../appwrite";
 import { columns1 } from "../data/kanban";
 import styles from "../styles/Boards.module.css";
 
 const Boards = () => {
   const [user, setUser] = useRecoilState(userState);
   const [columns, setColumns] = useState(columns1);
+  const [columns22222, setColumns22222] = useState({});
 
   const [isBrowser, setIsBrowser] = useState(false);
+  console.log(columns1);
 
   useEffect(() => {
     setIsBrowser(process.browser);
+
+    let test = {};
+    const getColumns = async () => {
+      try {
+        const columns = await api.fetchColumns();
+        for (const column of columns.documents) {
+          test[column.$id] = { title: column.title, items: [] };
+        }
+        console.log(test);
+      } catch (err) {
+        console.log(err.message);
+      }
+    };
+    getColumns();
   }, []);
 
   const onDragEnd = (result, columns, setColumns) => {
@@ -84,7 +101,7 @@ const Boards = () => {
           <div className={styles.wrapper}>
             <div className={styles.column}>
               {Object.entries(columns).map(([columnId, column], index) => {
-                console.log("Columns = ", columnId, column, index);
+                // console.log("Columns = ", columnId, column, index);
                 return (
                   <Droppable key={columnId} droppableId={columnId}>
                     {(provided, snapshot) => (
@@ -95,7 +112,7 @@ const Boards = () => {
                       >
                         <div className={styles.title}>{column.title}</div>
                         {column.items.map((item, index) => {
-                          console.log(item, index);
+                          //   console.log(item, index);
                           return (
                             <TaskCard key={item.id} item={item} index={index} />
                           );

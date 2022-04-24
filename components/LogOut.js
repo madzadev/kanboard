@@ -10,7 +10,7 @@ const LogOut = () => {
   const onClick = async () => {
     try {
       const login = await api.logout();
-      setUser([]);
+      setUser("");
       router.push("/");
     } catch (err) {
       console.log(err.message);
@@ -18,7 +18,7 @@ const LogOut = () => {
   };
   return (
     <div>
-      <p>Hi, {user[1]}!</p>
+      <p>Hi!</p>
       <button onClick={onClick}>Log out</button>
     </div>
   );

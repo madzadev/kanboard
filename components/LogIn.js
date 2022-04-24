@@ -21,27 +21,8 @@ const Login = () => {
     const { email, password } = data;
     try {
       const login = await api.login(email, password);
-      const {
-        $id,
-        name,
-        registration,
-        status,
-        passwordUpdate,
-        // email,
-        emailVerification,
-        prefs,
-      } = login;
-      setUser([
-        ...user,
-        $id,
-        name,
-        registration,
-        status,
-        passwordUpdate,
-        // email,
-        emailVerification,
-        // prefs,
-      ]);
+      const { $id } = login;
+      setUser($id);
       router.push("/boards");
     } catch (err) {
       console.log(err.message);

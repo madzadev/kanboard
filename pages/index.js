@@ -9,11 +9,11 @@ import { userState } from "../store/user";
 export default function Home() {
   const [user, setUser] = useRecoilState(userState);
   const router = useRouter();
-  useEffect(() => {
-    if (user.name) {
-      router.push("/boards");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (user) {
+  //     router.push("/boards");
+  //   }
+  // }, []);
 
   return (
     <div className={styles.wrapper}>

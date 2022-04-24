@@ -5,6 +5,9 @@ sdk
   .setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_URL) //set your own endpoint
   .setProject(process.env.NEXT_PUBLIC_APPWRITE_PROJECT); //set your own project id
 
+const postsCollection = "626191cb6d55c560840a";
+const columnsCollection = "62650fe54967ee4780ab";
+
 export const api = {
   register: async (name, mail, pass) => {
     try {
@@ -41,5 +44,30 @@ export const api = {
     } catch (error) {
       throw error;
     }
+  },
+  fetchPosts: () => {
+    return sdk.database.listDocuments(postsCollection);
+  },
+
+  fetchColumns: () => {
+    return sdk.database.listDocuments(columnsCollection);
+  },
+  createPost: async (data, userId, profileId) => {
+    return sdk.database.createDocument(
+      postsCollection,
+      "unique()",
+      data,
+      ["role:all"],
+      [`user:${userId}`]
+    );
+  },
+  updatePost: async (id, data, userId) => {
+    return sdk.database.updateDocument(
+      postsCollection,
+      id,
+      data,
+      ["role:all"],
+      [`user:${userId}`]
+    );
   },
 };
