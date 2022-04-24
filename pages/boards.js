@@ -135,7 +135,14 @@ const Boards = () => {
                           <p className={styles.title}>{column.title}</p>
                           <p>{column.items.length}</p>
                         </div>
-                        <div className={styles.add}>+ Add a card</div>
+                        <div
+                          className={styles.add}
+                          onClick={() => {
+                            console.log(`The column id is: ${columnId}`);
+                          }}
+                        >
+                          + Add a card
+                        </div>
                         {column.items.map((item, index) => {
                           return (
                             <TaskCard
