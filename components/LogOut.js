@@ -2,10 +2,24 @@ import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
 import { userState } from "../store/user";
 import { api } from "../appwrite";
+import { useEffect } from "react";
 
 const LogOut = () => {
   const [user, setUser] = useRecoilState(userState);
   const router = useRouter();
+
+  //   useEffect(()=>{
+  //     const getUserInfo = async () => {
+  //         try {
+  //           const fetchPostById = await api.fetchPostById(result.draggableId);
+  //           fetchPostById.column_id = destination.droppableId;
+  //           await api.updatePost(result.draggableId, fetchPostById);
+  //         } catch (err) {
+  //           console.log(err.message);
+  //         }
+  //       };
+  //       getUserInfo();
+  //   },[])
 
   const onClick = async () => {
     try {

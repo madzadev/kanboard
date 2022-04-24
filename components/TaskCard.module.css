@@ -14,12 +14,17 @@
     box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
 }
 
-.details {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+.title {
+    margin-bottom: 5px;
+}
+
+.description {
+    margin-bottom: 5px;
+}
+
+.date {
     font-size: 12px;
     font-weight: 400px;
     color: #7d7d7d;
 }
+

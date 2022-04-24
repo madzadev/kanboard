@@ -131,7 +131,11 @@ const Boards = () => {
                         ref={provided.innerRef}
                         {...provided.droppableProps}
                       >
-                        <div className={styles.title}>{column.title}</div>
+                        <div className={styles.head}>
+                          <p className={styles.title}>{column.title}</p>
+                          <p>{column.items.length}</p>
+                        </div>
+                        <div className={styles.add}>+ Add a card</div>
                         {column.items.map((item, index) => {
                           return (
                             <TaskCard

@@ -4,7 +4,7 @@ import styles from "./Header.module.css";
 const Header = () => {
   return (
     <div className={styles.wrapper}>
-      <h2>Logo</h2>
+      <h2>📃 TaskManager</h2>
       <LogOut />
     </div>
   );

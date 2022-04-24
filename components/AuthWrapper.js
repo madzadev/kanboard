@@ -10,9 +10,9 @@ import Footer from "../components/Footer";
 import styles from "./AuthWrapper.module.css";
 
 const AuthWrapper = ({ children }) => {
-  //   const [user, setUser] = useRecoilState(userState);
+  const [user, setUser] = useRecoilState(userState);
   const router = useRouter();
-  const user = "Madza";
+  //   const user = "Madza";
 
   useEffect(() => {
     if (!user) {
@@ -23,7 +23,7 @@ const AuthWrapper = ({ children }) => {
   return (
     <div className={styles.wrapper}>
       <Header />
-      {`User is ${user}`}
+      {/* {`User is ${user}`} */}
       <ContentWrapper>{children}</ContentWrapper>
       <Footer />
     </div>
