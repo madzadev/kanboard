@@ -28,12 +28,16 @@ export default function EditModal({ editModalVisible }) {
           <Modal onClose={closeModal}>
             <h1>{editModalVisible}</h1>
             <ModalHeader>
-              <ModalTitle>Duplicate this page</ModalTitle>
+              <ModalTitle>Add a new card</ModalTitle>
             </ModalHeader>
             <ModalBody>
               Duplicating this page will make it a child page of{" "}
               <span>Search - user exploration</span>, in the{" "}
               <span>Search & Smarts</span> space.
+              <p>Title</p>
+              <input type="text" />
+              <p>Description</p>
+              <input type="text" />
             </ModalBody>
             <ModalFooter>
               <button onClick={closeModal}>Cancel</button>
