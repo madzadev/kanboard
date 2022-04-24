@@ -34,22 +34,32 @@ import styles from "../styles/Boards.module.css";
 const Boards = () => {
   const [user, setUser] = useRecoilState(userState);
   const [columns, setColumns] = useState(columns1);
-  const [columns22222, setColumns22222] = useState({});
+  //   const [columns22222, setColumns22222] = useState();
 
   const [isBrowser, setIsBrowser] = useState(false);
-  console.log(columns1);
+
+  useEffect(() => {
+    console.log(columns);
+  }, [columns]);
 
   useEffect(() => {
     setIsBrowser(process.browser);
 
-    let test = {};
+    let data = {};
     const getColumns = async () => {
       try {
         const columns = await api.fetchColumns();
         for (const column of columns.documents) {
-          test[column.$id] = { title: column.title, items: [] };
+          const posts = await api.fetchPosts();
+          const tasks = [];
+          for (const post of posts.documents) {
+            if (column.$id == post.column_id) {
+              tasks.push(post);
+            }
+          }
+          data[column.$id] = { title: column.title, items: tasks };
         }
-        console.log(test);
+        setColumns(data);
       } catch (err) {
         console.log(err.message);
       }
@@ -101,7 +111,6 @@ const Boards = () => {
           <div className={styles.wrapper}>
             <div className={styles.column}>
               {Object.entries(columns).map(([columnId, column], index) => {
-                // console.log("Columns = ", columnId, column, index);
                 return (
                   <Droppable key={columnId} droppableId={columnId}>
                     {(provided, snapshot) => (
@@ -112,9 +121,12 @@ const Boards = () => {
                       >
                         <div className={styles.title}>{column.title}</div>
                         {column.items.map((item, index) => {
-                          //   console.log(item, index);
                           return (
-                            <TaskCard key={item.id} item={item} index={index} />
+                            <TaskCard
+                              key={item.$id}
+                              item={item}
+                              index={index}
+                            />
                           );
                         })}
                         {provided.placeholder}

@@ -1,9 +1,9 @@
 import { Draggable, resetServerContext } from "react-beautiful-dnd";
 import styles from "./TaskCard.module.css";
 
-const TaskCard = ({ key, item, index, data }) => {
+const TaskCard = ({ key, item, index }) => {
   return (
-    <Draggable key={key} draggableId={item.id.toString()} index={index}>
+    <Draggable key={key} draggableId={item.$id} index={index}>
       {(provided) => (
         <div
           ref={provided.innerRef}
@@ -11,11 +11,12 @@ const TaskCard = ({ key, item, index, data }) => {
           {...provided.dragHandleProps}
           className={styles.wrapper}
         >
-          <p>{item.Task}</p>
+          <p>{item.title}</p>
+          <p>{item.description}</p>
           <div className={styles.details}>
             <p>
               <span>
-                {new Date(item.Due_Date).toLocaleDateString("en-us", {
+                {new Date(item.due_date).toLocaleDateString("en-us", {
                   month: "short",
                   day: "2-digit",
                 })}
