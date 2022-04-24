@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@atlaskit/modal-dialog": "^12.2.6",
     "appwrite": "^7.0.0",
     "next": "12.1.5",
     "react": "18.0.0",

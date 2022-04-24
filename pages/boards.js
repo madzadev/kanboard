@@ -27,6 +27,8 @@ const TaskCard = dynamic(() => import("../components/TaskCard"), {
   ssr: false,
 });
 
+import EditModal from "../components/EditModal";
+
 import { api } from "../appwrite";
 // import { columns1 } from "../data/kanban";
 import styles from "../styles/Boards.module.css";
@@ -36,6 +38,7 @@ const Boards = () => {
   const [columns, setColumns] = useState({});
 
   const [isBrowser, setIsBrowser] = useState(false);
+  const [editModalVisible, setEditModalVisible] = useState(false);
 
   useEffect(() => {
     // console.log(columns);
@@ -116,6 +119,7 @@ const Boards = () => {
   };
   return (
     <AuthWrapper>
+      <EditModal editModalVisible={editModalVisible} />
       {isBrowser && columns ? (
         <DragDropContext
           onDragEnd={(result) => onDragEnd(result, columns, setColumns)}
@@ -139,6 +143,7 @@ const Boards = () => {
                           className={styles.add}
                           onClick={() => {
                             console.log(`The column id is: ${columnId}`);
+                            setEditModalVisible(!editModalVisible);
                           }}
                         >
                           + Add a card
