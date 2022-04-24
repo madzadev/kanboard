@@ -28,18 +28,17 @@ const TaskCard = dynamic(() => import("../components/TaskCard"), {
 });
 
 import { api } from "../appwrite";
-import { columns1 } from "../data/kanban";
+// import { columns1 } from "../data/kanban";
 import styles from "../styles/Boards.module.css";
 
 const Boards = () => {
   const [user, setUser] = useRecoilState(userState);
-  const [columns, setColumns] = useState(columns1);
-  //   const [columns22222, setColumns22222] = useState();
+  const [columns, setColumns] = useState({});
 
   const [isBrowser, setIsBrowser] = useState(false);
 
   useEffect(() => {
-    console.log(columns);
+    // console.log(columns);
   }, [columns]);
 
   useEffect(() => {
@@ -101,10 +100,12 @@ const Boards = () => {
         },
       });
     }
+    console.log(destination.droppableId); //right one to update to (column id)
+    console.log(result.draggableId); //task id
   };
   return (
     <AuthWrapper>
-      {isBrowser ? (
+      {isBrowser && columns ? (
         <DragDropContext
           onDragEnd={(result) => onDragEnd(result, columns, setColumns)}
         >
