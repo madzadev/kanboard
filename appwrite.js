@@ -45,6 +45,9 @@ export const api = {
       throw error;
     }
   },
+  fetchPostById: (documentId) => {
+    return sdk.database.getDocument(postsCollection, documentId);
+  },
   fetchPosts: () => {
     return sdk.database.listDocuments(postsCollection);
   },
@@ -66,8 +69,8 @@ export const api = {
       postsCollection,
       id,
       data,
-      ["role:all"],
-      [`user:${userId}`]
+      ["role:all"]
+      //   [`user:${userId}`]
     );
   },
 };

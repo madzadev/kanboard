@@ -100,8 +100,19 @@ const Boards = () => {
         },
       });
     }
-    console.log(destination.droppableId); //right one to update to (column id)
-    console.log(result.draggableId); //task id
+    // console.log(destination.droppableId); //right one to update to (column id)
+    // console.log(result.draggableId); //task id
+    // console.log(result);
+    const updatePost = async () => {
+      try {
+        const fetchPostById = await api.fetchPostById(result.draggableId);
+        fetchPostById.column_id = destination.droppableId;
+        await api.updatePost(result.draggableId, fetchPostById);
+      } catch (err) {
+        console.log(err.message);
+      }
+    };
+    updatePost();
   };
   return (
     <AuthWrapper>
