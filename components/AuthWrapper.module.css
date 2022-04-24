@@ -3,3 +3,9 @@
   min-height: 100vh;
   background-color:#F5F4F7
 }
+
+.content {
+    display: grid;
+    grid-template-columns: 300px auto;
+    gap: 20px;
+}

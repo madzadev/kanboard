@@ -1,0 +1,18 @@
+.wrapper {
+    max-width: 300px;
+    background-color: white;
+    padding: 20px;
+}
+
+.title {
+    margin-bottom: 20px;
+}
+
+.page {
+    margin-bottom: 10px;
+}
+
+.page:hover {
+    color: grey;
+    cursor: pointer;
+}

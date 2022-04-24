@@ -4,7 +4,9 @@ import { useRecoilState } from "recoil";
 import { userState } from "../store/user";
 
 import Header from "../components/Header";
-import ContentWrapper from "../components/ContentWrapper";
+import SideBar from "../components/SideBar";
+import Content from "./Content";
+
 import Footer from "../components/Footer";
 
 import styles from "./AuthWrapper.module.css";
@@ -24,7 +26,11 @@ const AuthWrapper = ({ children }) => {
     <div className={styles.wrapper}>
       <Header />
       {/* {`User is ${user}`} */}
-      <ContentWrapper>{children}</ContentWrapper>
+      <div className={styles.content}>
+        <SideBar />
+        <Content>{children}</Content>
+      </div>
+
       <Footer />
     </div>
   );
