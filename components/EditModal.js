@@ -1,5 +1,6 @@
 import { useCallback, useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/router";
 
 import Modal, {
   ModalBody,
@@ -16,6 +17,7 @@ export default function EditModal({ editModalVisible, activeColumn }) {
   const [isOpen, setIsOpen] = useState(false);
   //   const openModal = useCallback(() => setIsOpen(true), []);
   const closeModal = useCallback(() => setIsOpen(false), []);
+  const router = useRouter();
 
   useEffect(() => {
     return () => {
@@ -36,8 +38,9 @@ export default function EditModal({ editModalVisible, activeColumn }) {
     data["column_id"] = activeColumn;
     data["user_id"] = "626314f83fb2f2996b2e";
     try {
-      const post = await api.createPost(data, "626314f83fb2f2996b2e");
+      await api.createPost(data, "626314f83fb2f2996b2e");
       closeModal();
+      router.reload(window.location.pathname);
     } catch (err) {
       console.log(err.message);
     }
