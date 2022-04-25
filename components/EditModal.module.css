@@ -1,6 +1,6 @@
+
 .form {
     display:grid;
-/* border: 1px solid green; */
 margin-top: 20px;
 }
 
@@ -9,11 +9,16 @@ margin-top: 20px;
     margin-bottom: 20px;
     padding: 5px 20px;
     border-radius: 5px;
-    border:1 pc solid silver;
+    background-color:#F5F4F7 ; 
+    border: none;
+}
+
+.textarea {
+    min-height:150px;
 }
 
 .cancel {
-    background-color:tomato;
+    background-color:rgb(255, 147, 128);
     border: none;
     padding: 10px 20px;
     width: 120px;
@@ -21,7 +26,7 @@ margin-top: 20px;
 }
 
 .cancel:hover {
-    background-color:rgb(255, 64, 30);
+    background-color:rgb(255, 107, 81);
     cursor: pointer;
 }
 

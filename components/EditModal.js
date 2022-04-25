@@ -46,7 +46,7 @@ export default function EditModal({ editModalVisible }) {
 
       <ModalTransition>
         {isOpen && (
-          <Modal onClose={closeModal}>
+          <Modal onClose={closeModal} className={styles.wrapper}>
             <h1>{editModalVisible}</h1>
             <ModalHeader>
               <ModalTitle>Add a new card</ModalTitle>
@@ -62,9 +62,9 @@ export default function EditModal({ editModalVisible }) {
                   className={styles.input}
                 />
                 {errors.title && <span>Enter a valid title</span>}
-                <input
+                <textarea
                   {...register("description", { required: true })}
-                  className={styles.input}
+                  className={`${styles.input} ${styles.textarea}`}
                 />
                 {errors.title && <span>Enter a valid description</span>}
                 <input
