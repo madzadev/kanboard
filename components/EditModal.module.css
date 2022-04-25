@@ -1,0 +1,40 @@
+.form {
+    display:grid;
+/* border: 1px solid green; */
+margin-top: 20px;
+}
+
+.input {
+    height:40px;
+    margin-bottom: 20px;
+    padding: 5px 20px;
+    border-radius: 5px;
+    border:1 pc solid silver;
+}
+
+.cancel {
+    background-color:tomato;
+    border: none;
+    padding: 10px 20px;
+    width: 120px;
+    border-radius: 5px;
+}
+
+.cancel:hover {
+    background-color:rgb(255, 64, 30);
+    cursor: pointer;
+}
+
+.add {
+    background-color:rgb(218, 252, 218);;
+    border: none;
+    padding: 10px 20px;
+    width: 120px;
+    border-radius: 5px;
+}
+
+.add:hover {
+    background-color: rgb(188, 252, 188);
+    cursor: pointer;
+}
+
