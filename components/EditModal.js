@@ -8,9 +8,11 @@ import Modal, {
   ModalTitle,
   ModalTransition,
 } from "@atlaskit/modal-dialog";
+import { api } from "../appwrite";
+
 import styles from "./EditModal.module.css";
 
-export default function EditModal({ editModalVisible }) {
+export default function EditModal({ editModalVisible, activeColumn }) {
   const [isOpen, setIsOpen] = useState(false);
   //   const openModal = useCallback(() => setIsOpen(true), []);
   const closeModal = useCallback(() => setIsOpen(false), []);
@@ -29,15 +31,16 @@ export default function EditModal({ editModalVisible }) {
 
   const onSubmit = async (data) => {
     const { title, description, due_date } = data;
-    console.log(title);
-    // try {
-    //   const login = await api.login(email, password);
-    //   const { $id } = login;
-    //   setUser($id);
-    //   router.push("/boards");
-    // } catch (err) {
-    //   console.log(err.message);
-    // }
+    console.log(data);
+    console.log(activeColumn);
+    data["column_id"] = activeColumn;
+    data["user_id"] = "626314f83fb2f2996b2e";
+    try {
+      const post = await api.createPost(data, "626314f83fb2f2996b2e");
+      closeModal();
+    } catch (err) {
+      console.log(err.message);
+    }
   };
 
   return (

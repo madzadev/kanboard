@@ -39,6 +39,7 @@ const Boards = () => {
 
   const [isBrowser, setIsBrowser] = useState(false);
   const [editModalVisible, setEditModalVisible] = useState(false);
+  const [activeColumn, setActiveColumn] = useState();
 
   useEffect(() => {
     // console.log(columns);
@@ -119,7 +120,10 @@ const Boards = () => {
   };
   return (
     <AuthWrapper>
-      <EditModal editModalVisible={editModalVisible} />
+      <EditModal
+        editModalVisible={editModalVisible}
+        activeColumn={activeColumn}
+      />
       {isBrowser && columns ? (
         <DragDropContext
           onDragEnd={(result) => onDragEnd(result, columns, setColumns)}
@@ -142,8 +146,9 @@ const Boards = () => {
                         <div
                           className={styles.add}
                           onClick={() => {
-                            console.log(`The column id is: ${columnId}`);
+                            // console.log(`The column id is: ${columnId}`);
                             setEditModalVisible(!editModalVisible);
+                            setActiveColumn(columnId);
                           }}
                         >
                           + Add a card
