@@ -1,21 +1,3 @@
-// import { useRecoilState } from "recoil";
-// import { userState } from "../store/user";
-
-// import AuthWrapper from "../components/AuthWrapper";
-// import LogOut from "../components/LogOut";
-
-// const Boards = () => {
-//   const [user, setUser] = useRecoilState(userState);
-
-//   return (
-//     <AuthWrapper>
-//       <h1>Welcome, {user}!</h1>
-//     </AuthWrapper>
-//   );
-// };
-
-// export default Boards;
-
 import dynamic from "next/dynamic";
 import { useState, useEffect } from "react";
 import { useRecoilState } from "recoil";
@@ -113,38 +95,6 @@ const Boards = () => {
     }
 
     setActiveColumn(destination.droppableId);
-
-    // console.log(destination.droppableId); //right one to update to (column id)
-    // console.log(result.draggableId); //task id
-    // console.log(result);
-    const updatePost = async () => {
-      try {
-        // console.log(destination);
-        // const fetchPostById = await api.fetchPostById(result.draggableId);
-        // fetchPostById.column_id = destination.droppableId;
-        // fetchPostById.pos_index = destination.index;
-        // console.log(destination.droppableId);
-
-        // get target column items
-        const targetColumn = columns[destination.droppableId].items;
-        const targetPosition = destination.index;
-        targetColumn.forEach(async (item, index) => {
-          let position = index;
-          if (index >= targetPosition) {
-            console.log(123456);
-            position += 1;
-          }
-          item.column_id = destination.droppableId;
-          item.pos_index = position;
-          // console.log(item);
-          // await api.updatePost(item.$id, item);
-        });
-        // console.log(targetColumn);
-      } catch (err) {
-        console.log(err.message);
-      }
-    };
-    updatePost();
   };
   return (
     <AuthWrapper>
