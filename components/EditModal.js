@@ -32,12 +32,11 @@ export default function EditModal({ editModalVisible, activeColumn }) {
   } = useForm();
 
   const onSubmit = async (data) => {
-    const { title, description, due_date } = data;
-    console.log(data);
-    console.log(activeColumn);
-    data["column_id"] = activeColumn;
-    data["user_id"] = "626314f83fb2f2996b2e";
     try {
+      const posts = await api.fetchPostsByColumnId(activeColumn);
+      data["pos_index"] = posts.total;
+      data["column_id"] = activeColumn;
+      data["user_id"] = "626314f83fb2f2996b2e";
       await api.createPost(data, "626314f83fb2f2996b2e");
       closeModal();
       router.reload(window.location.pathname);
@@ -84,7 +83,7 @@ export default function EditModal({ editModalVisible, activeColumn }) {
                   <button onClick={closeModal} className={styles.cancel}>
                     Cancel
                   </button>
-                  <button type="submit" className={styles.add} autoFocus>
+                  <button type="submit" className={styles.add}>
                     Add
                   </button>
                 </ModalFooter>

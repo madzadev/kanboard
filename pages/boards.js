@@ -126,6 +126,7 @@ const Boards = () => {
                           className={styles.add}
                           onClick={() => {
                             // console.log(`The column id is: ${columnId}`);
+                            console.log(column);
                             setEditModalVisible(!editModalVisible);
                             setActiveColumn(columnId);
                           }}

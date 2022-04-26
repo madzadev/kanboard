@@ -1,4 +1,4 @@
-import { Appwrite } from "appwrite"; //importing from Appwrite's SDK
+import { Appwrite, Query } from "appwrite"; //importing from Appwrite's SDK
 
 const sdk = new Appwrite();
 sdk
@@ -48,13 +48,18 @@ export const api = {
   fetchPostById: (documentId) => {
     return sdk.database.getDocument(postsCollection, documentId);
   },
-  fetchPosts: () => {
-    return sdk.database.listDocuments(postsCollection);
+  fetchPostsByColumnId: (columnId) => {
+    return sdk.database.listDocuments(postsCollection, [
+      Query.equal("column_id", columnId),
+    ]);
   },
-
   fetchColumns: () => {
     return sdk.database.listDocuments(columnsCollection);
   },
+  fetchPosts: (post) => {
+    return sdk.database.listDocuments(postsCollection);
+  },
+
   createPost: async (data, userId, profileId) => {
     return sdk.database.createDocument(
       postsCollection,
