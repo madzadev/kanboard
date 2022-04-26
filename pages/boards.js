@@ -42,7 +42,13 @@ const Boards = () => {
   const [activeColumn, setActiveColumn] = useState();
 
   useEffect(() => {
-    // console.log(columns);
+    if (activeColumn) {
+      columns[activeColumn].items.forEach(async (item, index) => {
+        item.column_id = activeColumn;
+        item.pos_index = index;
+        await api.updatePost(item.$id, item);
+      });
+    }
   }, [columns]);
 
   useEffect(() => {
@@ -105,23 +111,35 @@ const Boards = () => {
         },
       });
     }
+
+    setActiveColumn(destination.droppableId);
+
     // console.log(destination.droppableId); //right one to update to (column id)
     // console.log(result.draggableId); //task id
     // console.log(result);
     const updatePost = async () => {
       try {
         // console.log(destination);
-        const fetchPostById = await api.fetchPostById(result.draggableId);
-        fetchPostById.column_id = destination.droppableId;
-        fetchPostById.pos_index = destination.index;
+        // const fetchPostById = await api.fetchPostById(result.draggableId);
+        // fetchPostById.column_id = destination.droppableId;
+        // fetchPostById.pos_index = destination.index;
         // console.log(destination.droppableId);
 
         // get target column items
         const targetColumn = columns[destination.droppableId].items;
         const targetPosition = destination.index;
-        console.log(targetColumn);
-
-        await api.updatePost(result.draggableId, fetchPostById);
+        targetColumn.forEach(async (item, index) => {
+          let position = index;
+          if (index >= targetPosition) {
+            console.log(123456);
+            position += 1;
+          }
+          item.column_id = destination.droppableId;
+          item.pos_index = position;
+          // console.log(item);
+          // await api.updatePost(item.$id, item);
+        });
+        // console.log(targetColumn);
       } catch (err) {
         console.log(err.message);
       }
