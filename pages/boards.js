@@ -60,6 +60,7 @@ const Boards = () => {
               tasks.push(post);
             }
           }
+          tasks.sort((a, b) => a.pos_index - b.pos_index);
           data[column.$id] = { title: column.title, items: tasks };
         }
         setColumns(data);
@@ -109,8 +110,17 @@ const Boards = () => {
     // console.log(result);
     const updatePost = async () => {
       try {
+        // console.log(destination);
         const fetchPostById = await api.fetchPostById(result.draggableId);
         fetchPostById.column_id = destination.droppableId;
+        fetchPostById.pos_index = destination.index;
+        // console.log(destination.droppableId);
+
+        // get target column items
+        const targetColumn = columns[destination.droppableId].items;
+        const targetPosition = destination.index;
+        console.log(targetColumn);
+
         await api.updatePost(result.draggableId, fetchPostById);
       } catch (err) {
         console.log(err.message);
@@ -131,6 +141,7 @@ const Boards = () => {
           <div className={styles.wrapper}>
             <div className={styles.column}>
               {Object.entries(columns).map(([columnId, column], index) => {
+                // console.log(columns);
                 return (
                   <Droppable key={columnId} droppableId={columnId}>
                     {(provided, snapshot) => (
