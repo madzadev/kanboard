@@ -17,3 +17,17 @@
     color: grey;
     cursor: pointer;
 }
+
+.add {
+    padding: 5px 0;
+    background-color: rgb(218, 252, 218);
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+    text-align: center;
+    color: #10957d
+}
+
+.add:hover {
+    background-color: rgb(188, 252, 188);
+    cursor: pointer;
+}
