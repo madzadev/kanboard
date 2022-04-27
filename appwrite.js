@@ -78,4 +78,13 @@ export const api = {
       //   [`user:${userId}`]
     );
   },
+  createColumn: async (data, userId, profileId) => {
+    return sdk.database.createDocument(
+      columnsCollection,
+      "unique()",
+      data,
+      ["role:all"]
+      // [`user:${userId}`]
+    );
+  },
 };

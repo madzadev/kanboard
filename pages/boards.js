@@ -10,6 +10,7 @@ const TaskCard = dynamic(() => import("../components/TaskCard"), {
 });
 
 import AddCardModal from "../components/AddCardModal";
+import AddColumnModal from "../components/AddColumnModal";
 
 import { api } from "../appwrite";
 // import { columns1 } from "../data/kanban";
@@ -21,6 +22,7 @@ const Boards = () => {
 
   const [isBrowser, setIsBrowser] = useState(false);
   const [addCardModalVisible, setAddCardModalVisible] = useState(false);
+  const [addColumnModalVisible, setAddColumnModalVisible] = useState(false);
   const [activeColumn, setActiveColumn] = useState();
 
   useEffect(() => {
@@ -102,6 +104,7 @@ const Boards = () => {
         addCardModalVisible={addCardModalVisible}
         activeColumn={activeColumn}
       />
+      <AddColumnModal addColumnModalVisible={addColumnModalVisible} />
       {isBrowser && columns ? (
         <DragDropContext
           onDragEnd={(result) => onDragEnd(result, columns, setColumns)}
@@ -148,7 +151,13 @@ const Boards = () => {
                   </Droppable>
                 );
               })}
-              <h1>+ Column</h1>
+              <h1
+                onClick={() => {
+                  setAddColumnModalVisible(!addColumnModalVisible);
+                }}
+              >
+                + Column
+              </h1>
             </div>
           </div>
         </DragDropContext>
