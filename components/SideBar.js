@@ -9,6 +9,7 @@ const SideBar = () => {
       <h3 className={styles.page}># Tech</h3>
       <h3 className={styles.page}># Books</h3>
       <h3 className={styles.page}># Movies</h3>
+      <h2>+ Add new</h2>
     </div>
   );
 };
