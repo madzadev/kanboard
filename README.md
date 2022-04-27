@@ -12,9 +12,10 @@
 10. Create, read, update and delete cards
 11. Move cards around between different columns and positions
 12. Due dates
-13. Input validation for each input field in app
-14. Responsive interface fotr smaller screens
-15. Easy to setup your own instance
+13. Image upload
+14. Input validation for each input field in app
+15. Responsive interface fotr smaller screens
+16. Easy to setup your own instance
 
 ## How to setup
 
