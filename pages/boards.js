@@ -9,7 +9,7 @@ const TaskCard = dynamic(() => import("../components/TaskCard"), {
   ssr: false,
 });
 
-import EditModal from "../components/EditModal";
+import AddCardModal from "../components/AddCardModal";
 
 import { api } from "../appwrite";
 // import { columns1 } from "../data/kanban";
@@ -20,7 +20,7 @@ const Boards = () => {
   const [columns, setColumns] = useState({});
 
   const [isBrowser, setIsBrowser] = useState(false);
-  const [editModalVisible, setEditModalVisible] = useState(false);
+  const [addCardModalVisible, setAddCardModalVisible] = useState(false);
   const [activeColumn, setActiveColumn] = useState();
 
   useEffect(() => {
@@ -98,8 +98,8 @@ const Boards = () => {
   };
   return (
     <AuthWrapper>
-      <EditModal
-        editModalVisible={editModalVisible}
+      <AddCardModal
+        addCardModalVisible={addCardModalVisible}
         activeColumn={activeColumn}
       />
       {isBrowser && columns ? (
@@ -127,7 +127,7 @@ const Boards = () => {
                           onClick={() => {
                             // console.log(`The column id is: ${columnId}`);
                             console.log(column);
-                            setEditModalVisible(!editModalVisible);
+                            setAddCardModalVisible(!addCardModalVisible);
                             setActiveColumn(columnId);
                           }}
                         >

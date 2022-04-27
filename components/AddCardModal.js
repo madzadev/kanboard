@@ -11,9 +11,9 @@ import Modal, {
 } from "@atlaskit/modal-dialog";
 import { api } from "../appwrite";
 
-import styles from "./EditModal.module.css";
+import styles from "./AddCardModal.module.css";
 
-export default function EditModal({ editModalVisible, activeColumn }) {
+export default function AddCardModal({ addCardModalVisible, activeColumn }) {
   const [isOpen, setIsOpen] = useState(false);
   //   const openModal = useCallback(() => setIsOpen(true), []);
   const closeModal = useCallback(() => setIsOpen(false), []);
@@ -23,7 +23,7 @@ export default function EditModal({ editModalVisible, activeColumn }) {
     return () => {
       setIsOpen(!isOpen);
     };
-  }, [editModalVisible]);
+  }, [addCardModalVisible]);
 
   const {
     register,
@@ -52,7 +52,7 @@ export default function EditModal({ editModalVisible, activeColumn }) {
       <ModalTransition>
         {isOpen && (
           <Modal onClose={closeModal} className={styles.wrapper}>
-            <h1>{editModalVisible}</h1>
+            <h1>{addCardModalVisible}</h1>
             <ModalHeader>
               <ModalTitle>Add a new card</ModalTitle>
             </ModalHeader>
