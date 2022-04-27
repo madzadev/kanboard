@@ -30,7 +30,7 @@ const Login = () => {
   };
   return (
     <div className={styles.wrapper}>
-      <h1 className={styles.title}>Please Log In</h1>
+      <h1 className={styles.title}>Please Log-In</h1>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
         <input
           {...register("email", { required: true })}
