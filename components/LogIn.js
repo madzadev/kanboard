@@ -35,11 +35,14 @@ const Login = () => {
         <input
           {...register("email", { required: true })}
           className={styles.input}
+          placeholder="Your email"
         />
         {errors.email && <span>Enter a valid email</span>}
         <input
           {...register("password", { required: true })}
           className={styles.input}
+          type="password"
+          placeholder="Your password"
         />
         {errors.password && <span>Enter a valid password</span>}
 
