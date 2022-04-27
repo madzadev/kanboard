@@ -148,6 +148,7 @@ const Boards = () => {
                   </Droppable>
                 );
               })}
+              <h1>+ Column</h1>
             </div>
           </div>
         </DragDropContext>

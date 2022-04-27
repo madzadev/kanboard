@@ -6,7 +6,8 @@
     margin: 8px;
   display: flex;
   width: 100%;
-  min-height: 80vh;
+  /* min-height: 80vh; */
+  
 }
 
 .list {
@@ -19,6 +20,10 @@
   border-radius: 5px;
   padding: 15px 15px;
   margin-right: 45px;
+  /* border: 1px solid grey; */
+  max-height: 80vh;
+  min-height: 80vh;
+  overflow-y: hidden;
 }
 
 .head {
