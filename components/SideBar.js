@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Link from "next/link";
 
 import AddBoardModal from "./AddBoardModal";
 import styles from "./SideBar.module.css";
@@ -9,16 +10,34 @@ const SideBar = () => {
   return (
     <div className={styles.wrapper}>
       <AddBoardModal addBoardModalVisible={addBoardModalVisible} />
-      <h2 className={styles.title}>Dashboard</h2>
+      <Link href="/dashboard">
+        <h3 className={styles.page}>Dashboard</h3>
+      </Link>
+      {/* <h2 className={styles.title}>Dashboard</h2>
       <h2 className={styles.title}>Notifications</h2>
-      <h2 className={styles.title}>Calendar</h2>
+      <h2 className={styles.title}>Calendar</h2> */}
       <hr />
       <h2 className={styles.title}>Boards list</h2>
-      <h3 className={styles.page}># Articles</h3>
-      <h3 className={styles.page}># Goals</h3>
+      <Link href="/board/articles">
+        <h3 className={styles.page}># Articles</h3>
+      </Link>
+      <Link href="/board/goals">
+        <h3 className={styles.page}># Goals</h3>
+      </Link>
+      <Link href="/board/tech">
+        <h3 className={styles.page}># Tech</h3>
+      </Link>
+      <Link href="/board/books">
+        <h3 className={styles.page}># Books</h3>
+      </Link>
+      <Link href="/board/movies">
+        <h3 className={styles.page}># Movies</h3>
+      </Link>
+
+      {/* <h3 className={styles.page}># Goals</h3>
       <h3 className={styles.page}># Tech</h3>
       <h3 className={styles.page}># Books</h3>
-      <h3 className={styles.page}># Movies</h3>
+      <h3 className={styles.page}># Movies</h3> */}
       <div
         className={styles.add}
         onClick={() => {
