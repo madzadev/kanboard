@@ -23,7 +23,7 @@ const Login = () => {
       const login = await api.login(email, password);
       const { $id } = login;
       setUser($id);
-      router.push("/boards");
+      router.push("/dashboard");
     } catch (err) {
       console.log(err.message);
     }

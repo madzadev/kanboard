@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import urlSlug from "url-slug";
+import { useRecoilState } from "recoil";
+import { boardState } from "../store/board";
 
 import AddBoardModal from "./AddBoardModal";
 
@@ -9,6 +11,7 @@ import styles from "./SideBar.module.css";
 
 const SideBar = () => {
   const [addBoardModalVisible, setAddBoardModalVisible] = useState(false);
+  const [activeBoard, setActiveBoard] = useRecoilState(boardState);
   const [boards, setBoards] = useState();
 
   useEffect(() => {
@@ -40,7 +43,14 @@ const SideBar = () => {
         boards.map((board, index) => {
           return (
             <Link href={`/board/${urlSlug(board.title)}`} key={index}>
-              <h3 className={styles.page}># {board.title}</h3>
+              <h3
+                className={styles.page}
+                onClick={() => {
+                  setActiveBoard(board.$id);
+                }}
+              >
+                # {board.title}
+              </h3>
             </Link>
           );
         })}

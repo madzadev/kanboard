@@ -54,8 +54,10 @@ export const api = {
       Query.equal("column_id", columnId),
     ]);
   },
-  fetchColumns: () => {
-    return sdk.database.listDocuments(columnsCollection);
+  fetchColumns: (board_id) => {
+    return sdk.database.listDocuments(columnsCollection, [
+      Query.equal("board_id", board_id),
+    ]);
   },
   fetchPosts: (post) => {
     return sdk.database.listDocuments(postsCollection);

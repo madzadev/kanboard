@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 import { useState, useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { userState } from "../../store/user";
+import { boardState } from "../../store/board";
 
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import AuthWrapper from "../../components/AuthWrapper";
@@ -24,6 +25,7 @@ const Boards = () => {
   const [addCardModalVisible, setAddCardModalVisible] = useState(false);
   const [addColumnModalVisible, setAddColumnModalVisible] = useState(false);
   const [activeColumn, setActiveColumn] = useState();
+  const [activeBoard, setActiveBoard] = useRecoilState(boardState);
 
   useEffect(() => {
     if (activeColumn) {
@@ -37,11 +39,12 @@ const Boards = () => {
 
   useEffect(() => {
     setIsBrowser(process.browser);
+    // console.log(activeBoard);
 
     let data = {};
     const getColumns = async () => {
       try {
-        const columns = await api.fetchColumns();
+        const columns = await api.fetchColumns(activeBoard);
         for (const column of columns.documents) {
           const posts = await api.fetchPosts();
           const tasks = [];
@@ -59,7 +62,7 @@ const Boards = () => {
       }
     };
     getColumns();
-  }, []);
+  }, [activeBoard]);
 
   const onDragEnd = (result, columns, setColumns) => {
     if (!result.destination) return;
