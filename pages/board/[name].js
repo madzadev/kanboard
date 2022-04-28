@@ -1,8 +1,10 @@
 import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { userState } from "../../store/user";
 import { boardState } from "../../store/board";
+import urlSlug from "url-slug";
 
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import AuthWrapper from "../../components/AuthWrapper";
@@ -27,6 +29,30 @@ const Boards = () => {
   const [activeColumn, setActiveColumn] = useState();
   const [activeBoard, setActiveBoard] = useRecoilState(boardState);
 
+  const router = useRouter();
+  const { name } = router.query;
+
+  useEffect(() => {
+    if (!name) return;
+    console.log(name);
+    if (!activeBoard) {
+      const getBoards = async () => {
+        try {
+          const boards = await api.getBoards();
+          boards.documents.forEach((board, index) => {
+            if (urlSlug(board.title) === name) {
+              console.log(board.$id);
+              setActiveBoard(board.$id);
+            }
+          });
+        } catch (err) {
+          console.log(err.message);
+        }
+      };
+      getBoards();
+    }
+  }, [name]);
+
   useEffect(() => {
     if (activeColumn) {
       columns[activeColumn].items.forEach(async (item, index) => {
@@ -39,8 +65,6 @@ const Boards = () => {
 
   useEffect(() => {
     setIsBrowser(process.browser);
-    if (!activeBoard) {
-    }
 
     let data = {};
     const getColumns = async () => {
