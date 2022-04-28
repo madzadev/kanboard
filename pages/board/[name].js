@@ -39,7 +39,8 @@ const Boards = () => {
 
   useEffect(() => {
     setIsBrowser(process.browser);
-    // console.log(activeBoard);
+    if (!activeBoard) {
+    }
 
     let data = {};
     const getColumns = async () => {
@@ -154,13 +155,13 @@ const Boards = () => {
                   </Droppable>
                 );
               })}
-              <h1
+              <h3
                 onClick={() => {
                   setAddColumnModalVisible(!addColumnModalVisible);
                 }}
               >
-                + Column
-              </h1>
+                + Add column
+              </h3>
             </div>
           </div>
         </DragDropContext>

@@ -1,6 +1,8 @@
 import { useCallback, useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
+import { useRecoilState } from "recoil";
+import { boardState } from "../store/board";
 
 import Modal, {
   ModalBody,
@@ -14,6 +16,7 @@ import { api } from "../appwrite";
 import styles from "./AddColumnModal.module.css";
 
 export default function AddColumnModal({ addColumnModalVisible }) {
+  const [activeBoard, setActiveBoard] = useRecoilState(boardState);
   const [isOpen, setIsOpen] = useState(false);
   //   const openModal = useCallback(() => setIsOpen(true), []);
   const closeModal = useCallback(() => setIsOpen(false), []);
@@ -32,6 +35,7 @@ export default function AddColumnModal({ addColumnModalVisible }) {
   } = useForm();
 
   const onSubmit = async (data) => {
+    data["board_id"] = activeBoard;
     try {
       await api.createColumn(data, "626314f83fb2f2996b2e");
       closeModal();

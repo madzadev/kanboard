@@ -93,4 +93,13 @@ export const api = {
       // [`user:${userId}`]
     );
   },
+  createBoard: async (data, userId, profileId) => {
+    return sdk.database.createDocument(
+      boardsCollection,
+      "unique()",
+      data,
+      ["role:all"]
+      // [`user:${userId}`]
+    );
+  },
 };

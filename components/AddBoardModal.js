@@ -1,6 +1,9 @@
+// Test adding new board after refresh
+
 import { useCallback, useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
+import urlSlug from "url-slug";
 
 import Modal, {
   ModalBody,
@@ -32,10 +35,15 @@ export default function AddBoardModal({ addBoardModalVisible }) {
   } = useForm();
 
   const onSubmit = async (data) => {
+    console.log(data.title);
     try {
-      await api.createColumn(data, "626314f83fb2f2996b2e");
+      await api.createBoard(data, "626314f83fb2f2996b2e");
       closeModal();
-      router.reload(window.location.pathname);
+
+      // router.reload();
+      // router.reload(window.location.pathname);
+
+      router.push(`/board/${urlSlug(data.title)}`);
     } catch (err) {
       console.log(err.message);
     }
