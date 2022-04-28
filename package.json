@@ -17,6 +17,7 @@
     "react-dom": "18.0.0",
     "react-hook-form": "^7.30.0",
     "recoil": "^0.7.2",
+    "url-slug": "^3.0.3",
     "uuid": "^8.3.2"
   },
   "devDependencies": {

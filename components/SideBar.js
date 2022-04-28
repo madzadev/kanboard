@@ -1,11 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import urlSlug from "url-slug";
 
 import AddBoardModal from "./AddBoardModal";
+
+import { api } from "../appwrite";
 import styles from "./SideBar.module.css";
 
 const SideBar = () => {
   const [addBoardModalVisible, setAddBoardModalVisible] = useState(false);
+  const [boards, setBoards] = useState();
+
+  useEffect(() => {
+    const getBoards = async () => {
+      try {
+        const boards = await api.getBoards();
+        console.log(boards);
+        setBoards(boards.documents);
+        // router.push("/boards");
+      } catch (err) {
+        console.log(err.message);
+      }
+    };
+    getBoards();
+  }, []);
 
   return (
     <div className={styles.wrapper}>
@@ -18,10 +36,16 @@ const SideBar = () => {
       <h2 className={styles.title}>Calendar</h2> */}
       <hr />
       <h2 className={styles.title}>Boards list</h2>
-      <Link href="/board/articles">
-        <h3 className={styles.page}># Articles</h3>
-      </Link>
-      <Link href="/board/goals">
+      {boards &&
+        boards.map((board, index) => {
+          return (
+            <Link href={`/board/${urlSlug(board.title)}`} key={index}>
+              <h3 className={styles.page}># {board.title}</h3>
+            </Link>
+          );
+        })}
+
+      {/* <Link href="/board/goals">
         <h3 className={styles.page}># Goals</h3>
       </Link>
       <Link href="/board/tech">
@@ -32,7 +56,7 @@ const SideBar = () => {
       </Link>
       <Link href="/board/movies">
         <h3 className={styles.page}># Movies</h3>
-      </Link>
+      </Link> */}
 
       {/* <h3 className={styles.page}># Goals</h3>
       <h3 className={styles.page}># Tech</h3>
@@ -44,7 +68,7 @@ const SideBar = () => {
           setAddBoardModalVisible(!addBoardModalVisible);
         }}
       >
-        + New server
+        + New board
       </div>
     </div>
   );

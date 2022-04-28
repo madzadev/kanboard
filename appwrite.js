@@ -7,6 +7,7 @@ sdk
 
 const postsCollection = "626191cb6d55c560840a";
 const columnsCollection = "62650fe54967ee4780ab";
+const boardsCollection = "6269a2609a2d7334def7";
 
 export const api = {
   register: async (name, mail, pass) => {
@@ -58,6 +59,9 @@ export const api = {
   },
   fetchPosts: (post) => {
     return sdk.database.listDocuments(postsCollection);
+  },
+  getBoards: () => {
+    return sdk.database.listDocuments(boardsCollection);
   },
 
   createPost: async (data, userId, profileId) => {
