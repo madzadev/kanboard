@@ -1,5 +1,8 @@
 .wrapper {
     min-width: 500px;
+    background: rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 5px;
 }
 
 .title {
