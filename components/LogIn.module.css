@@ -6,7 +6,8 @@
 }
 
 .title {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    color:rgb(37, 37, 37)
 }
 
 .form {
@@ -19,7 +20,8 @@
     margin-bottom: 20px;
     padding: 5px 20px;
     border-radius: 5px;
-    border: 1px solid rgb(100, 100, 100);;
+    /* border: 1px solid rgb(100, 100, 100);; */
+    border: none;
 }
 
 .submit {
