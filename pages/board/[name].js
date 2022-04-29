@@ -34,14 +34,12 @@ const Boards = () => {
 
   useEffect(() => {
     if (!name) return;
-    console.log(name);
     if (!activeBoard) {
       const getBoards = async () => {
         try {
           const boards = await api.getBoards();
           boards.documents.forEach((board, index) => {
             if (urlSlug(board.title) === name) {
-              console.log(board.$id);
               setActiveBoard(board.$id);
             }
           });
