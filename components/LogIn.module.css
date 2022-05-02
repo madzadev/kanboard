@@ -31,3 +31,8 @@
     border: none;
     background-color: rgb(228, 228, 228)
 }
+
+.submit:hover {
+    cursor: pointer;
+    background-color: rgb(209, 209, 209)
+}

@@ -39,11 +39,8 @@ export default function AddBoardModal({ addBoardModalVisible }) {
     try {
       await api.createBoard(data, "626314f83fb2f2996b2e");
       closeModal();
-
-      // router.reload();
-      // router.reload(window.location.pathname);
-
       router.push(`/board/${urlSlug(data.title)}`);
+      data = "";
     } catch (err) {
       console.log(err.message);
     }
