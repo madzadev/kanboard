@@ -65,7 +65,7 @@ export default function AddBoardModal({ addBoardModalVisible }) {
               <span>Search - user exploration</span>, in the{" "}
               <span>Search & Smarts</span> space.
               <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-                <p>Enter the title</p>
+                <p className={styles.title}>Enter the title</p>
                 <input
                   {...register("title", { required: true })}
                   className={styles.input}

@@ -25,7 +25,9 @@
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
     text-align: center;
-    color: #10957d
+    color: #10957d;
+
+
 }
 
 .add:hover {

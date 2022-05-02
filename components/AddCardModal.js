@@ -58,11 +58,8 @@ export default function AddCardModal({ addCardModalVisible, activeColumn }) {
               <ModalTitle>Add a new card</ModalTitle>
             </ModalHeader>
             <ModalBody>
-              Duplicating this page will make it a child page of{" "}
-              <span>Search - user exploration</span>, in the{" "}
-              <span>Search & Smarts</span> space.
               <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-                <p>Enter the title</p>
+                <p className={styles.title}>Enter the title</p>
                 <input
                   {...register("title", { required: true })}
                   className={styles.input}
