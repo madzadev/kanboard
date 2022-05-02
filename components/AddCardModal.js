@@ -65,11 +65,13 @@ export default function AddCardModal({ addCardModalVisible, activeColumn }) {
                   className={styles.input}
                 />
                 {errors.title && <span>Enter a valid title</span>}
+                <p className={styles.title}>Enter the description</p>
                 <textarea
                   {...register("description", { required: true })}
                   className={`${styles.input} ${styles.textarea}`}
                 />
                 {errors.title && <span>Enter a valid description</span>}
+                <p className={styles.title}>Enter the due date</p>
                 <input
                   {...register("due_date", { required: true })}
                   className={styles.input}

@@ -179,6 +179,7 @@ const Boards = () => {
                 );
               })}
               <h3
+                className={styles.new}
                 onClick={() => {
                   setAddColumnModalVisible(!addColumnModalVisible);
                 }}
