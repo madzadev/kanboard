@@ -14,6 +14,7 @@ const TaskCard = dynamic(() => import("../../components/TaskCard"), {
 
 import AddCardModal from "../../components/AddCardModal";
 import AddColumnModal from "../../components/AddColumnModal";
+import Search from "../../components/Search";
 
 import { api } from "../../appwrite";
 // import { columns1 } from "../data/kanban";
@@ -131,6 +132,7 @@ const Boards = () => {
         activeColumn={activeColumn}
       />
       <AddColumnModal addColumnModalVisible={addColumnModalVisible} />
+      <Search />
       {isBrowser && columns ? (
         <DragDropContext
           onDragEnd={(result) => onDragEnd(result, columns, setColumns)}
