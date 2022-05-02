@@ -61,16 +61,15 @@ export default function AddBoardModal({ addBoardModalVisible }) {
               <ModalTitle>Add a new board</ModalTitle>
             </ModalHeader>
             <ModalBody>
-              Duplicating this page will make it a child page of{" "}
-              <span>Search - user exploration</span>, in the{" "}
-              <span>Search & Smarts</span> space.
               <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
                 <p className={styles.title}>Enter the title</p>
                 <input
                   {...register("title", { required: true })}
                   className={styles.input}
                 />
-                {errors.title && <span>Enter a valid title</span>}
+                {errors.title && (
+                  <span className={styles.error}>Enter a valid title</span>
+                )}
                 {/* <input type="submit" className={styles.submit} /> */}
                 <ModalFooter>
                   <button onClick={closeModal} className={styles.cancel}>

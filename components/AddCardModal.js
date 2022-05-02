@@ -64,19 +64,27 @@ export default function AddCardModal({ addCardModalVisible, activeColumn }) {
                   {...register("title", { required: true })}
                   className={styles.input}
                 />
-                {errors.title && <span>Enter a valid title</span>}
+                {errors.title && (
+                  <span className={styles.error}>Enter a valid title</span>
+                )}
                 <p className={styles.title}>Enter the description</p>
                 <textarea
                   {...register("description", { required: true })}
                   className={`${styles.input} ${styles.textarea}`}
                 />
-                {errors.title && <span>Enter a valid description</span>}
+                {errors.title && (
+                  <span className={styles.error}>
+                    Enter a valid description
+                  </span>
+                )}
                 <p className={styles.title}>Enter the due date</p>
                 <input
                   {...register("due_date", { required: true })}
                   className={styles.input}
                 />
-                {errors.due_date && <span>Enter a valid due date</span>}
+                {errors.due_date && (
+                  <span className={styles.error}>Enter a valid due date</span>
+                )}
 
                 {/* <input type="submit" className={styles.submit} /> */}
                 <ModalFooter>

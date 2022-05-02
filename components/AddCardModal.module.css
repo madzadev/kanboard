@@ -1,10 +1,7 @@
-
 .form {
     display:grid;
 margin-top: 20px;
 }
-
-
 
 .title {
     margin-bottom: 10px;
@@ -12,7 +9,7 @@ margin-top: 20px;
 
 .input {
     height:40px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     padding: 5px 20px;
     border-radius: 5px;
     background-color:#F5F4F7 ; 
@@ -21,6 +18,11 @@ margin-top: 20px;
 
 .textarea {
     min-height:150px;
+}
+
+.error {
+    color: tomato;
+    margin-bottom: 10px;
 }
 
 .cancel {

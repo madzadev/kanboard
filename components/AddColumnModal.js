@@ -63,7 +63,9 @@ export default function AddColumnModal({ addColumnModalVisible }) {
                   {...register("title", { required: true })}
                   className={styles.input}
                 />
-                {errors.title && <span>Enter a valid title</span>}
+                {errors.title && (
+                  <span className={styles.error}>Enter a valid title</span>
+                )}
                 {/* <input type="submit" className={styles.submit} /> */}
                 <ModalFooter>
                   <button onClick={closeModal} className={styles.cancel}>
