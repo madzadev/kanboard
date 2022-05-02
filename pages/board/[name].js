@@ -150,6 +150,7 @@ const Boards = () => {
                         <div className={styles.head}>
                           <p className={styles.title}>{column.title}</p>
                           <p>{column.items.length}</p>
+                          {!column.items.length && <p>🗑️</p>}
                         </div>
                         <div
                           className={styles.add}

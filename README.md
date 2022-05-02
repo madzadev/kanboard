@@ -2,7 +2,7 @@
 
 1. Log-in via email and password
 2. Member invite system
-3. Dashboard with tasks and history
+3. Dashboard with stats and history
 4. Calendar
 5. Scratchpad
 6. Notification system
