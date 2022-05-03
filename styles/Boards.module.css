@@ -10,6 +10,7 @@
 
 .new:hover {
   cursor: pointer;
+  color: grey;
 }
 
 .column {
