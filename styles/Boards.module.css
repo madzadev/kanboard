@@ -29,7 +29,7 @@
   margin-right: 45px;
   max-height: 80vh;
   min-height: 80vh;
-  overflow-y: hidden;
+  
 }
 
 .head {
@@ -57,4 +57,9 @@
 .add:hover {
     background-color: rgb(188, 252, 188);
     cursor: pointer;
+}
+
+.cardsWrapper {
+  overflow-y: auto;
+  margin-top:20px;
 }

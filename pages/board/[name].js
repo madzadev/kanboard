@@ -140,7 +140,6 @@ const Boards = () => {
           <div className={styles.wrapper}>
             <div className={styles.column}>
               {Object.entries(columns).map(([columnId, column], index) => {
-                // console.log(columns);
                 return (
                   <Droppable key={columnId} droppableId={columnId}>
                     {(provided, snapshot) => (
@@ -165,15 +164,18 @@ const Boards = () => {
                         >
                           + Add a card
                         </div>
-                        {column.items.map((item, index) => {
-                          return (
-                            <TaskCard
-                              key={item.$id}
-                              item={item}
-                              index={index}
-                            />
-                          );
-                        })}
+                        <div className={styles.cardsWrapper}>
+                          {column.items.map((item, index) => {
+                            return (
+                              <TaskCard
+                                key={item.$id}
+                                item={item}
+                                index={index}
+                              />
+                            );
+                          })}
+                        </div>
+
                         {provided.placeholder}
                       </div>
                     )}
