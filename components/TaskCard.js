@@ -35,8 +35,8 @@ const TaskCard = ({ key, item, index }) => {
             setActiveCard(item.$id);
           }}
         >
-          <h3 className={styles.title}>{item.title}</h3>
-          <p className={styles.description}>{item.description}</p>
+          <h3 className={styles.title}>{item.title.slice(0, 25)}</h3>
+          <p className={styles.description}>{item.description.slice(0, 70)}</p>
 
           <div className={styles.date}>
             <p>

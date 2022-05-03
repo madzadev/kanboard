@@ -5,7 +5,12 @@
 }
 
 .button {
-    background-color: tomato;
+    background-color: rgb(255, 141, 121);
     border: none;
     border-radius: 5px;
+}
+
+.button:hover {
+    background-color: rgb(255, 106, 80);
+    cursor: pointer;
 }

@@ -34,11 +34,13 @@ const SideBar = () => {
       <Link href="/dashboard">
         <h3 className={styles.page}>🏡 Dashboard</h3>
       </Link>
-      {/* <h2 className={styles.title}>Dashboard</h2>
-      <h2 className={styles.title}>Notifications</h2>
-      <h2 className={styles.title}>Calendar</h2> */}
-      <hr />
-      <h2 className={styles.title}>Boards list</h2>
+      <Link href="/calendar">
+        <h3 className={styles.page}>📅 Calendar</h3>
+      </Link>
+      <Link href="/scratchpad">
+        <h3 className={styles.page}>📝 Scratchpad</h3>
+      </Link>
+
       {boards &&
         boards.map((board, index) => {
           return (
