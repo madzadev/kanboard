@@ -35,12 +35,10 @@ export default function AddBoardModal({ addBoardModalVisible }) {
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log(data.title);
     try {
       await api.createBoard(data, "626314f83fb2f2996b2e");
       closeModal();
       router.push(`/board/${urlSlug(data.title)}`);
-      data = "";
     } catch (err) {
       console.log(err.message);
     }
@@ -69,7 +67,13 @@ export default function AddBoardModal({ addBoardModalVisible }) {
                 )}
                 {/* <input type="submit" className={styles.submit} /> */}
                 <ModalFooter>
-                  <button onClick={closeModal} className={styles.cancel}>
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      closeModal();
+                    }}
+                    className={styles.cancel}
+                  >
                     Cancel
                   </button>
                   <button type="submit" className={styles.add}>
