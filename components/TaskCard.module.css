@@ -10,9 +10,9 @@
     /* background: ${({ isDragging }) =>
       isDragging ? 'rgba(255, 59, 59, 0.15)' : 'white'}; */
     background: white;
-    
     box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
     margin-right: 10px;
+    
     
 }
 

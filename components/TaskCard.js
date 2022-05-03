@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Draggable, resetServerContext } from "react-beautiful-dnd";
 import styles from "./TaskCard.module.css";
 import { api } from "../appwrite";
+import formatDDMMM from "../helpers/formatDDMMM";
 
 const TaskCard = ({ key, item, index }) => {
   const [activeCard, setActiveCard] = useState(0);
@@ -29,20 +30,17 @@ const TaskCard = ({ key, item, index }) => {
           {...provided.draggableProps}
           {...provided.dragHandleProps}
           className={styles.wrapper}
+          // style={{ borderLeft: `10px solid rgb(218, 252, 218` }}
           onClick={() => {
             setActiveCard(item.$id);
           }}
         >
           <h3 className={styles.title}>{item.title}</h3>
           <p className={styles.description}>{item.description}</p>
+
           <div className={styles.date}>
             <p>
-              <span>
-                {new Date(item.due_date).toLocaleDateString("en-us", {
-                  month: "short",
-                  day: "2-digit",
-                })}
-              </span>
+              <span>{formatDDMMM(item.due_date)}</span>
             </p>
           </div>
         </div>

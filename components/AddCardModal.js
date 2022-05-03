@@ -80,6 +80,7 @@ export default function AddCardModal({ addCardModalVisible, activeColumn }) {
                 <p className={styles.title}>Enter the due date</p>
                 <input
                   {...register("due_date", { required: true })}
+                  type="date"
                   className={styles.input}
                 />
                 {errors.due_date && (

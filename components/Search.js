@@ -6,7 +6,7 @@ const Search = () => {
       <input
         className={styles.input}
         type="text"
-        placeholder="Search your cards"
+        placeholder="Search card by title"
       />
     </div>
   );
