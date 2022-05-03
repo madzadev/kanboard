@@ -32,7 +32,7 @@ const SideBar = () => {
     <div className={styles.wrapper}>
       <AddBoardModal addBoardModalVisible={addBoardModalVisible} />
       <Link href="/dashboard">
-        <h3 className={styles.page}>Dashboard</h3>
+        <h3 className={styles.page}>🏡 Dashboard</h3>
       </Link>
       {/* <h2 className={styles.title}>Dashboard</h2>
       <h2 className={styles.title}>Notifications</h2>

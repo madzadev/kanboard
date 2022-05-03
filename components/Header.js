@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <div className={styles.wrapper}>
       <Link href="/dashboard">
-        <h2 className={styles.logo}>📃 Trello</h2>
+        <h2 className={styles.logo}>📃 Kanban Board</h2>
       </Link>
       <LogOut />
     </div>
