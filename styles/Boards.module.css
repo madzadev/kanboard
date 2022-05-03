@@ -2,6 +2,16 @@
     display: flex;
 }
 
+.new {
+  border: 1px solid red;
+  height: 50px;
+  width: 300px;
+}
+
+.new:hover {
+  cursor: pointer;
+}
+
 .column {
     margin: 8px;
   display: flex;
