@@ -1,0 +1,11 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.button {
+    background-color: tomato;
+    border: none;
+    border-radius: 5px;
+}

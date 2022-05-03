@@ -4,6 +4,8 @@ import { userState } from "../store/user";
 import { api } from "../appwrite";
 import { useEffect } from "react";
 
+import styles from "./LogOut.module.css";
+
 const LogOut = () => {
   const [user, setUser] = useRecoilState(userState);
   const router = useRouter();
@@ -31,9 +33,11 @@ const LogOut = () => {
     }
   };
   return (
-    <div>
-      <p>Hi!</p>
-      <button onClick={onClick}>Log out</button>
+    <div className={styles.wrapper}>
+      <p>Hi, Madza!</p>
+      <button className={styles.button} onClick={onClick}>
+        Log out
+      </button>
     </div>
   );
 };
