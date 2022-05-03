@@ -182,14 +182,14 @@ const Boards = () => {
                   </Droppable>
                 );
               })}
-              <h3
+              <p
                 className={styles.new}
                 onClick={() => {
                   setAddColumnModalVisible(!addColumnModalVisible);
                 }}
               >
                 + Add column
-              </h3>
+              </p>
             </div>
           </div>
         </DragDropContext>

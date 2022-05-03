@@ -3,14 +3,19 @@
 }
 
 .new {
-  border: 1px solid red;
-  height: 50px;
+  padding: 5px 0;
+    background-color: rgb(252, 244, 218);
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+    text-align: center;
+    color: #939510;
+  height: 30px;
   width: 300px;
 }
 
 .new:hover {
   cursor: pointer;
-  color: grey;
+  background-color: rgb(252, 248, 188);
 }
 
 .column {
@@ -27,8 +32,8 @@
   border-radius: 5px;
   padding: 15px 15px;
   margin-right: 45px;
-  max-height: 80vh;
-  min-height: 80vh;
+  max-height: 75vh;
+  min-height: 75vh;
   
 }
 
@@ -77,7 +82,7 @@
 /* Handle */
 .cardsWrapper::-webkit-scrollbar-thumb {
   background: rgb(255, 255, 255); 
-  border-radius: 5px;
+  border-radius: 3px;
 }
 
 /* Handle on hover */
