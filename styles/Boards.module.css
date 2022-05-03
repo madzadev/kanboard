@@ -63,3 +63,24 @@
   overflow-y: auto;
   margin-top:20px;
 }
+
+.cardsWrapper::-webkit-scrollbar {
+  width: 10px;
+  cursor: pointer;
+}
+
+/* Track */
+.cardsWrapper::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 3px #F5F4F7; 
+}
+ 
+/* Handle */
+.cardsWrapper::-webkit-scrollbar-thumb {
+  background: rgb(255, 255, 255); 
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+.cardsWrapper::-webkit-scrollbar-thumb:hover {
+  background: #fafafa;
+}
