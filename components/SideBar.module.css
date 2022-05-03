@@ -14,9 +14,15 @@
     margin-left: 20px;
 }
 
+
+
 .page:hover {
     color: grey;
     cursor: pointer;
+}
+
+.board:first-child {
+    margin-top: 200px;
 }
 
 .add {

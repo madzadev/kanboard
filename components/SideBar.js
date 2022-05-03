@@ -38,9 +38,10 @@ const SideBar = () => {
         <h3 className={styles.page}>📅 Calendar</h3>
       </Link>
       <Link href="/scratchpad">
-        <h3 className={styles.page}>📝 Scratchpad</h3>
+        <h3 className={styles.page} style={{ marginBottom: "70px" }}>
+          📝 Scratchpad
+        </h3>
       </Link>
-
       {boards &&
         boards.map((board, index) => {
           return (
