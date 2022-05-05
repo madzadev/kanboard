@@ -17,7 +17,8 @@ export default function Home() {
 
   return (
     <div className={styles.wrapper}>
-      <h1>Appwrite Kanban</h1>
+      {/* <h1>Appwrite Kanban</h1> */}
+      <div></div>
       <LogIn />
     </div>
   );

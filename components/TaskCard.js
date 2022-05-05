@@ -37,7 +37,7 @@ const TaskCard = ({ key, item, index }) => {
         >
           <h3 className={styles.title}>{item.title.slice(0, 25)}</h3>
           <p className={styles.description}>{item.description.slice(0, 70)}</p>
-          <p style={{ color: "tomato" }}># Articles # Review</p>
+          {/* <p style={{ color: "tomato" }}># Articles # Review</p> */}
 
           <div className={styles.date}>
             <p>

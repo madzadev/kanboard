@@ -7,7 +7,7 @@
 
 .title {
     margin-bottom: 30px;
-    color:rgb(37, 37, 37)
+    color:rgb(37, 37, 37);
 }
 
 .form {
@@ -29,10 +29,10 @@
     margin-bottom: 20px;
     border-radius: 5px;
     border: none;
-    background-color: rgb(228, 228, 228)
+    background-color: rgb(0, 183, 255)
 }
 
 .submit:hover {
     cursor: pointer;
-    background-color: rgb(209, 209, 209)
+    background-color: rgb(0, 155, 216)
 }

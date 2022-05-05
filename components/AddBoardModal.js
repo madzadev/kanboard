@@ -65,6 +65,16 @@ export default function AddBoardModal({ addBoardModalVisible }) {
                 {errors.title && (
                   <span className={styles.error}>Enter a valid title</span>
                 )}
+                <p className={styles.title}>Enter the description</p>
+                <input
+                  {...register("description", { required: true })}
+                  className={styles.input}
+                />
+                {errors.description && (
+                  <span className={styles.error}>
+                    Enter a valid description
+                  </span>
+                )}
                 {/* <input type="submit" className={styles.submit} /> */}
                 <ModalFooter>
                   <button

@@ -65,6 +65,9 @@ export const api = {
   getBoards: () => {
     return sdk.database.listDocuments(boardsCollection);
   },
+  getBoardById: (boardId) => {
+    sdk.database.getDocument(boardsCollection, boardId);
+  },
 
   createPost: async (data, userId, profileId) => {
     return sdk.database.createDocument(

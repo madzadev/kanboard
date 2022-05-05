@@ -29,6 +29,8 @@ const Boards = () => {
   const [addColumnModalVisible, setAddColumnModalVisible] = useState(false);
   const [activeColumn, setActiveColumn] = useState();
   const [activeBoard, setActiveBoard] = useRecoilState(boardState);
+  const [boardTitle, setBoardTitle] = useState("");
+  const [boardDescription, setBoardDescription] = useState("");
 
   const router = useRouter();
   const { name } = router.query;
@@ -42,6 +44,8 @@ const Boards = () => {
           boards.documents.forEach((board, index) => {
             if (urlSlug(board.title) === name) {
               setActiveBoard(board.$id);
+              setBoardTitle(board.title);
+              setBoardDescription(board.description);
             }
           });
         } catch (err) {
@@ -64,6 +68,7 @@ const Boards = () => {
 
   useEffect(() => {
     setIsBrowser(process.browser);
+    console.log(activeBoard);
 
     let data = {};
     const getColumns = async () => {
@@ -134,8 +139,8 @@ const Boards = () => {
       <AddColumnModal addColumnModalVisible={addColumnModalVisible} />
       <div className={styles.header}>
         <div className={styles.name}>
-          <h1>Title</h1>
-          <p>This is the description of the board</p>
+          <h1>{boardTitle}</h1>
+          <p>{boardDescription}</p>
         </div>
         <Search />
       </div>
