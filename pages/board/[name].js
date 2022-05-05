@@ -152,7 +152,7 @@ const Boards = () => {
       <AddColumnModal addColumnModalVisible={addColumnModalVisible} />
       <div className={styles.header}>
         <div className={styles.name}>
-          <h1>{boardTitle}</h1>
+          <h2>{boardTitle}</h2>
           <p>{boardDescription}</p>
         </div>
         <Search
