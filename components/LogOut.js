@@ -34,7 +34,7 @@ const LogOut = () => {
   };
   return (
     <div className={styles.wrapper}>
-      <p>Hi, Madza!</p>
+      {/* <p>Hi, Madza!</p> */}
       <button className={styles.button} onClick={onClick}>
         Log out
       </button>

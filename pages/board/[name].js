@@ -194,7 +194,11 @@ const Boards = () => {
                         </div>
                         <div className={styles.cardsWrapper}>
                           {column.items
-                            .filter((item) => item.title.includes(searchQuery))
+                            .filter((item) =>
+                              item.title
+                                .toLowerCase()
+                                .includes(searchQuery.toLowerCase())
+                            )
                             .map((item, index) => {
                               return (
                                 <TaskCard
