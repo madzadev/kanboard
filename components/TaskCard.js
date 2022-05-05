@@ -41,7 +41,7 @@ const TaskCard = ({ key, item, index }) => {
 
           <div className={styles.date}>
             <p>
-              <span>{formatDDMMM(item.due_date)}</span>
+              <span>{item.due_date ? formatDDMMM(item.due_date) : ""}</span>
             </p>
           </div>
         </div>

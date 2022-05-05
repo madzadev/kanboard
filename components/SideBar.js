@@ -39,7 +39,7 @@ const SideBar = () => {
       </Link>
       <Link href="/activities">
         <h3 className={styles.page} style={{ marginBottom: "50px" }}>
-          📃 Activities
+          ⌛ Activities
         </h3>
       </Link>
       {boards &&
