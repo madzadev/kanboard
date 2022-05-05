@@ -32,6 +32,7 @@ const Calendar = () => {
         plugins={[dayGridPlugin]}
         initialView="dayGridMonth"
         events={events}
+        height="75vh"
       />
     </AuthWrapper>
   );

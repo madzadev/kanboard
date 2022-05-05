@@ -32,6 +32,8 @@ const Boards = () => {
   const [boardTitle, setBoardTitle] = useState("");
   const [boardDescription, setBoardDescription] = useState("");
 
+  const [searchQuery, setSearchQuery] = useState("");
+
   const router = useRouter();
   const { name } = router.query;
 
@@ -153,7 +155,11 @@ const Boards = () => {
           <h1>{boardTitle}</h1>
           <p>{boardDescription}</p>
         </div>
-        <Search />
+        <Search
+          onChange={(e) => {
+            setSearchQuery(e.target.value);
+          }}
+        />
       </div>
 
       {isBrowser && columns ? (
@@ -179,7 +185,6 @@ const Boards = () => {
                         <div
                           className={styles.add}
                           onClick={() => {
-                            // console.log(`The column id is: ${columnId}`);
                             console.log(column);
                             setAddCardModalVisible(!addCardModalVisible);
                             setActiveColumn(columnId);
@@ -188,15 +193,17 @@ const Boards = () => {
                           + Add a card
                         </div>
                         <div className={styles.cardsWrapper}>
-                          {column.items.map((item, index) => {
-                            return (
-                              <TaskCard
-                                key={item.$id}
-                                item={item}
-                                index={index}
-                              />
-                            );
-                          })}
+                          {column.items
+                            .filter((item) => item.title.includes(searchQuery))
+                            .map((item, index) => {
+                              return (
+                                <TaskCard
+                                  key={item.$id}
+                                  item={item}
+                                  index={index}
+                                />
+                              );
+                            })}
                         </div>
 
                         {provided.placeholder}
