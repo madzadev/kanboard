@@ -54,9 +54,9 @@ export const api = {
       Query.equal("column_id", columnId),
     ]);
   },
-  fetchColumns: (board_id) => {
+  fetchColumns: (boardId) => {
     return sdk.database.listDocuments(columnsCollection, [
-      Query.equal("board_id", board_id),
+      Query.equal("board_id", boardId),
     ]);
   },
   fetchPosts: (post) => {
@@ -66,7 +66,7 @@ export const api = {
     return sdk.database.listDocuments(boardsCollection);
   },
   getBoardById: (boardId) => {
-    sdk.database.getDocument(boardsCollection, boardId);
+    return sdk.database.getDocument(boardsCollection, boardId);
   },
 
   createPost: async (data, userId, profileId) => {

@@ -68,7 +68,18 @@ const Boards = () => {
 
   useEffect(() => {
     setIsBrowser(process.browser);
-    console.log(activeBoard);
+
+    const getBoardData = async () => {
+      try {
+        const board = await api.getBoardById(activeBoard);
+        setBoardTitle(board.title);
+        setBoardDescription(board.description);
+      } catch (err) {
+        console.log(err.message);
+      }
+    };
+
+    getBoardData();
 
     let data = {};
     const getColumns = async () => {
