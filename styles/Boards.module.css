@@ -2,6 +2,18 @@
     display: flex;
 }
 
+.header {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 20px;
+
+}
+
+.name {
+  background-color: white;
+  padding: 10px 20px;
+}
+
 .new {
   padding: 5px 0;
     background-color: rgb(252, 244, 218);

@@ -132,7 +132,14 @@ const Boards = () => {
         activeColumn={activeColumn}
       />
       <AddColumnModal addColumnModalVisible={addColumnModalVisible} />
-      <Search />
+      <div className={styles.header}>
+        <div className={styles.name}>
+          <h1>Title</h1>
+          <p>This is the description of the board</p>
+        </div>
+        <Search />
+      </div>
+
       {isBrowser && columns ? (
         <DragDropContext
           onDragEnd={(result) => onDragEnd(result, columns, setColumns)}

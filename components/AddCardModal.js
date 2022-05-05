@@ -77,9 +77,9 @@ export default function AddCardModal({ addCardModalVisible, activeColumn }) {
                     Enter a valid description
                   </span>
                 )}
-                <p className={styles.title}>Enter the due date</p>
+                <p className={styles.title}>Enter the due date (optional)</p>
                 <input
-                  {...register("due_date", { required: true })}
+                  {...register("due_date")}
                   type="date"
                   className={styles.input}
                 />
