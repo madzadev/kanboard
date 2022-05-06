@@ -4,7 +4,7 @@ import styles from "./TaskCard.module.css";
 import { api } from "../appwrite";
 import formatDDMMM from "../helpers/formatDDMMM";
 
-const TaskCard = ({ key, item, index }) => {
+const TaskCard = ({ key, item, index, onClick }) => {
   const [activeCard, setActiveCard] = useState(0);
 
   useEffect(() => {
@@ -30,9 +30,7 @@ const TaskCard = ({ key, item, index }) => {
           {...provided.draggableProps}
           {...provided.dragHandleProps}
           className={styles.wrapper}
-          onClick={() => {
-            setActiveCard(item.$id);
-          }}
+          onClick={onClick}
         >
           <h3 className={styles.title}>{item.title.slice(0, 25)}</h3>
           <p className={styles.description}>{item.description.slice(0, 70)}</p>

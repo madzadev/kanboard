@@ -26,16 +26,17 @@ export default function ViewCardModal({ viewCardModalVisible, activeCard }) {
     };
   }, [viewCardModalVisible]);
 
-  const getCardData = async (activeCard) => {
+  const getCardData = async (id) => {
     try {
-      const data = await api.fetchPostById(activeCard);
+      const data = await api.fetchPostById(id);
+      console.log(data);
       setCardData(data);
-      closeModal();
+      //   closeModal();
     } catch (err) {
       console.log(err.message);
     }
   };
-  getCardData();
+  getCardData(activeCard);
 
   return (
     <div>
@@ -44,13 +45,13 @@ export default function ViewCardModal({ viewCardModalVisible, activeCard }) {
       <ModalTransition>
         {isOpen && (
           <Modal onClose={closeModal} className={styles.wrapper}>
-            <h1>{addCardModalVisible}</h1>
+            {/* <h1>{addCardModalVisible}</h1> */}
             <ModalHeader>
-              <ModalTitle>Add a new card</ModalTitle>
+              <ModalTitle>Card: {cardData ? cardData.title : ""}</ModalTitle>
             </ModalHeader>
             <ModalBody>
               <p className={styles.title}>Title</p>
-              <p>My title info</p>
+              <p>{cardData ? cardData.title : ""}</p>
 
               <ModalFooter>
                 <button

@@ -13,6 +13,7 @@ const TaskCard = dynamic(() => import("../../components/TaskCard"), {
 });
 
 import AddCardModal from "../../components/AddCardModal";
+import ViewCardModal from "../../components/ViewCardModal";
 import AddColumnModal from "../../components/AddColumnModal";
 import Search from "../../components/Search";
 
@@ -26,7 +27,10 @@ const Boards = () => {
 
   const [isBrowser, setIsBrowser] = useState(false);
   const [addCardModalVisible, setAddCardModalVisible] = useState(false);
+  const [viewCardModalVisible, setViewCardModalVisible] = useState(false);
   const [addColumnModalVisible, setAddColumnModalVisible] = useState(false);
+
+  const [activeCard, setActiveCard] = useState();
   const [activeColumn, setActiveColumn] = useState();
   const [activeBoard, setActiveBoard] = useRecoilState(boardState);
   const [boardTitle, setBoardTitle] = useState("");
@@ -209,6 +213,10 @@ const Boards = () => {
                                   key={item.$id}
                                   item={item}
                                   index={index}
+                                  onClick={() => {
+                                    setActiveCard(item.$id);
+                                    setViewCardModalVisible(true);
+                                  }}
                                 />
                               );
                             })}
