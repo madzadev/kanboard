@@ -30,14 +30,12 @@ const TaskCard = ({ key, item, index }) => {
           {...provided.draggableProps}
           {...provided.dragHandleProps}
           className={styles.wrapper}
-          // style={{ borderLeft: `10px solid rgb(218, 252, 218` }}
           onClick={() => {
             setActiveCard(item.$id);
           }}
         >
           <h3 className={styles.title}>{item.title.slice(0, 25)}</h3>
           <p className={styles.description}>{item.description.slice(0, 70)}</p>
-          {/* <p style={{ color: "tomato" }}># Articles # Review</p> */}
 
           <div className={styles.date}>
             <p>
@@ -49,10 +47,5 @@ const TaskCard = ({ key, item, index }) => {
     </Draggable>
   );
 };
-
-export async function getServerSideProps(context) {
-  resetServerContext();
-  return { props: { data: [] } };
-}
 
 export default TaskCard;

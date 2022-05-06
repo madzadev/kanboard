@@ -149,6 +149,10 @@ const Boards = () => {
         addCardModalVisible={addCardModalVisible}
         activeColumn={activeColumn}
       />
+      <ViewCardModal
+        viewCardModalVisible={viewCardModalVisible}
+        activeCard={activeCard}
+      />
       <AddColumnModal addColumnModalVisible={addColumnModalVisible} />
       <div className={styles.header}>
         <div className={styles.name}>
