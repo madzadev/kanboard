@@ -92,12 +92,6 @@ export default function AddBoardModal({ addBoardModalVisible }) {
                 </ModalFooter>
               </form>
             </ModalBody>
-            {/* <ModalFooter>
-              <button onClick={closeModal}>Cancel</button>
-              <button onClick={closeModal} autoFocus>
-                Add
-              </button>
-            </ModalFooter> */}
           </Modal>
         )}
       </ModalTransition>

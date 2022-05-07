@@ -102,12 +102,6 @@ export default function AddCardModal({ addCardModalVisible, activeColumn }) {
                 </ModalFooter>
               </form>
             </ModalBody>
-            {/* <ModalFooter>
-              <button onClick={closeModal}>Cancel</button>
-              <button onClick={closeModal} autoFocus>
-                Add
-              </button>
-            </ModalFooter> */}
           </Modal>
         )}
       </ModalTransition>
