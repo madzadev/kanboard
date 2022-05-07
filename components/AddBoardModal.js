@@ -36,7 +36,7 @@ export default function AddBoardModal({ addBoardModalVisible }) {
 
   const onSubmit = async (data) => {
     try {
-      await api.createBoard(data, "626314f83fb2f2996b2e");
+      await api.createBoard(data);
       closeModal();
       router.push(`/board/${urlSlug(data.title)}`);
     } catch (err) {

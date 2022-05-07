@@ -12,7 +12,6 @@
 
 .form {
     display:grid;
-/* border: 1px solid green; */
 }
 
 .input {
@@ -20,7 +19,6 @@
     margin-bottom: 20px;
     padding: 5px 20px;
     border-radius: 5px;
-    /* border: 1px solid rgb(100, 100, 100);; */
     border: none;
 }
 

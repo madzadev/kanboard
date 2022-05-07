@@ -10,22 +10,9 @@ const LogOut = () => {
   const [user, setUser] = useRecoilState(userState);
   const router = useRouter();
 
-  //   useEffect(()=>{
-  //     const getUserInfo = async () => {
-  //         try {
-  //           const fetchPostById = await api.fetchPostById(result.draggableId);
-  //           fetchPostById.column_id = destination.droppableId;
-  //           await api.updatePost(result.draggableId, fetchPostById);
-  //         } catch (err) {
-  //           console.log(err.message);
-  //         }
-  //       };
-  //       getUserInfo();
-  //   },[])
-
   const onClick = async () => {
     try {
-      const login = await api.logout();
+      const logout = await api.logout();
       setUser("");
       router.push("/");
     } catch (err) {

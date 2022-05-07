@@ -1,13 +1,13 @@
 import { Appwrite, Query } from "appwrite"; //importing from Appwrite's SDK
 
+const postsCollection = process.env.NEXT_PUBLIC_APPWRITE_POSTS_COLLECTION;
+const columnsCollection = process.env.NEXT_PUBLIC_APPWRITE_COLUMNS_COLLECTION;
+const boardsCollection = process.env.NEXT_PUBLIC_APPWRITE_BOARDS_COLLECTION;
+
 const sdk = new Appwrite();
 sdk
   .setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_URL) //set your own endpoint
   .setProject(process.env.NEXT_PUBLIC_APPWRITE_PROJECT); //set your own project id
-
-const postsCollection = "626191cb6d55c560840a";
-const columnsCollection = "62650fe54967ee4780ab";
-const boardsCollection = "6269a2609a2d7334def7";
 
 export const api = {
   register: async (name, mail, pass) => {
@@ -63,40 +63,16 @@ export const api = {
     return sdk.database.getDocument(boardsCollection, boardId);
   },
 
-  createPost: async (data, userId, profileId) => {
-    return sdk.database.createDocument(
-      postsCollection,
-      "unique()",
-      data,
-      ["role:all"],
-      [`user:${userId}`]
-    );
+  createPost: async (data) => {
+    return sdk.database.createDocument(postsCollection, "unique()", data);
   },
-  updatePost: async (id, data, userId) => {
-    return sdk.database.updateDocument(
-      postsCollection,
-      id,
-      data,
-      ["role:all"]
-      //   [`user:${userId}`]
-    );
+  updatePost: async (id, data) => {
+    return sdk.database.updateDocument(postsCollection, id, data);
   },
-  createColumn: async (data, userId, profileId) => {
-    return sdk.database.createDocument(
-      columnsCollection,
-      "unique()",
-      data,
-      ["role:all"]
-      // [`user:${userId}`]
-    );
+  createColumn: async (data) => {
+    return sdk.database.createDocument(columnsCollection, "unique()", data);
   },
-  createBoard: async (data, userId, profileId) => {
-    return sdk.database.createDocument(
-      boardsCollection,
-      "unique()",
-      data,
-      ["role:all"]
-      // [`user:${userId}`]
-    );
+  createBoard: async (data) => {
+    return sdk.database.createDocument(boardsCollection, "unique()", data);
   },
 };

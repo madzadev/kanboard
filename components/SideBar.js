@@ -18,7 +18,6 @@ const SideBar = () => {
     const getBoards = async () => {
       try {
         const boards = await api.getBoards();
-        console.log(boards);
         setBoards(boards.documents);
         // router.push("/boards");
       } catch (err) {

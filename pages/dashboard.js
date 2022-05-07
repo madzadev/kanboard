@@ -14,8 +14,6 @@ const Dashboard = () => {
         <StatsCard score={12} title="Total users" />
       </div>
 
-      {/* <h3>Total tasks: 13</h3>
-      <h3>Total users: 23</h3> */}
       <h3>Calendar</h3>
       <h3>Recent activity</h3>
       <h3>Upcoming tasks</h3>

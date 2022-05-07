@@ -37,7 +37,7 @@ export default function AddColumnModal({ addColumnModalVisible }) {
   const onSubmit = async (data) => {
     data["board_id"] = activeBoard;
     try {
-      await api.createColumn(data, "626314f83fb2f2996b2e");
+      await api.createColumn(data);
       closeModal();
       router.reload(window.location.pathname);
     } catch (err) {
@@ -83,12 +83,6 @@ export default function AddColumnModal({ addColumnModalVisible }) {
                 </ModalFooter>
               </form>
             </ModalBody>
-            {/* <ModalFooter>
-              <button onClick={closeModal}>Cancel</button>
-              <button onClick={closeModal} autoFocus>
-                Add
-              </button>
-            </ModalFooter> */}
           </Modal>
         )}
       </ModalTransition>

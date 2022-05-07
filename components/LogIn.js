@@ -48,10 +48,6 @@ const Login = () => {
 
         <input type="submit" className={styles.submit} value="Log In" />
       </form>
-      {/* <h3>Do not have an account?</h3>
-      <Link href="/signup">
-        <h2>Register</h2>
-      </Link> */}
     </div>
   );
 };
