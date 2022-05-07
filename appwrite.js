@@ -56,7 +56,6 @@ export const api = {
   deleteBoard: (id) => {
     return sdk.database.deleteDocument(boardsCollection, id);
   },
-  // EDIT These below
   getPostsInColumn: (columnId) => {
     return sdk.database.listDocuments(postsCollection, [
       Query.equal("column_id", columnId),
