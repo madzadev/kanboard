@@ -5,6 +5,7 @@ import { useRecoilState } from "recoil";
 import { boardState } from "../store/board";
 
 import AddBoardModal from "./AddBoardModal";
+import DeleteButton from "./DeleteButton";
 
 import { api } from "../appwrite";
 import styles from "./SideBar.module.css";
@@ -12,15 +13,19 @@ import styles from "./SideBar.module.css";
 const SideBar = () => {
   const [addBoardModalVisible, setAddBoardModalVisible] = useState(false);
   const [activeBoard, setActiveBoard] = useRecoilState(boardState);
-  const [boards, setBoards] = useState();
+  const [boards, setBoards] = useState([]);
 
   useEffect(() => {
     const getAllBoards = async () => {
       try {
         const boards = await api.getAllBoards();
-        console.log(boards.documents);
-        setBoards(boards.documents);
-        // router.push("/boards");
+        // console.log(boards);
+        boards.documents.forEach(async (board, index) => {
+          const columns = await api.getColumnsInBoard(board.$id);
+          console.log(columns);
+          board["columns"] = columns.total;
+          setBoards((boards) => [...boards, board]);
+        });
       } catch (err) {
         console.log(err.message);
       }
@@ -45,16 +50,26 @@ const SideBar = () => {
       {boards &&
         boards.map((board, index) => {
           return (
-            <Link href={`/board/${urlSlug(board.title)}`} key={index}>
-              <h3
-                className={styles.page}
-                onClick={() => {
-                  setActiveBoard(board.$id);
-                }}
-              >
-                # {board.title}
-              </h3>
-            </Link>
+            <div className={styles.item} key={index}>
+              <Link href={`/board/${urlSlug(board.title)}`}>
+                <h3
+                  className={styles.page}
+                  onClick={() => {
+                    setActiveBoard(board.$id);
+                  }}
+                >
+                  # {board.title}
+                </h3>
+              </Link>
+              {!board.columns && (
+                <DeleteButton
+                  onClick={() => {
+                    api.deleteBoard(board.$id);
+                    // router.reload(window.location.pathname);
+                  }}
+                />
+              )}
+            </div>
           );
         })}
 

@@ -9,6 +9,11 @@
     margin-bottom: 25px;
 }
 
+.item {
+    display: grid;
+    grid-template-columns: auto 30px;
+}
+
 .page {
     margin-bottom: 15px;
     margin-left: 20px;

@@ -70,6 +70,9 @@ export const api = {
   getAllPosts: () => {
     return sdk.database.listDocuments(postsCollection);
   },
+  getAllColumns: () => {
+    return sdk.database.listDocuments(columnsCollection);
+  },
   getAllBoards: () => {
     return sdk.database.listDocuments(boardsCollection);
   },
