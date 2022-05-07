@@ -58,18 +58,6 @@ export default function ViewCardModal({ viewCardModalVisible, activeCard }) {
     };
   }, [viewCardModalVisible]);
 
-  //   useEffect(() => {
-  //     const get = async (data) => {
-  //         try {
-  //           const updatePost = await api.updatePost(activeCard, data);
-  //           closeModal();
-  //           router.reload(window.location.pathname);
-  //         } catch (err) {
-  //           console.log(err.message);
-  //         }
-  //       };
-  //   }, [editMode])
-
   return (
     <div>
       {/* <button onClick={openModal}>Open modal</button> */}
@@ -77,7 +65,6 @@ export default function ViewCardModal({ viewCardModalVisible, activeCard }) {
       <ModalTransition>
         {isOpen && (
           <Modal onClose={closeModal} className={styles.wrapper}>
-            {/* <h1>{addCardModalVisible}</h1> */}
             <ModalHeader>
               <div className={styles.head}>
                 <ModalTitle>{cardData ? cardData.title : ""}</ModalTitle>
@@ -85,12 +72,13 @@ export default function ViewCardModal({ viewCardModalVisible, activeCard }) {
                   <EditButton
                     onClick={() => {
                       setEditMode(!editMode);
+                      setDeleteMode(false);
                     }}
                   />
                   <DeleteButton
                     onClick={() => {
-                      console.log(activeCard);
                       setDeleteMode(!deleteMode);
+                      setEditMode(false);
                     }}
                   />
                 </div>
@@ -207,9 +195,6 @@ export default function ViewCardModal({ viewCardModalVisible, activeCard }) {
                   >
                     Close
                   </button>
-                  {/* <button type="submit" className={styles.add}>
-                  Add
-                </button> */}
                 </ModalFooter>
               </ModalBody>
             )}

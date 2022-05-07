@@ -62,7 +62,7 @@ export default function DeleteWarningModal({
                 className={styles.form}
               >
                 <p className={styles.title}>
-                  The column will be permanently deleted.
+                  The column will be permanently deleted!
                 </p>
                 <p className={styles.title} d>
                   Proceed?
