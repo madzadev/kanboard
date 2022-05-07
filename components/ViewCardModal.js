@@ -106,9 +106,9 @@ export default function ViewCardModal({ viewCardModalVisible, activeCard }) {
                     <span className={styles.error}>Enter a valid title</span>
                   )}
                   <p className={styles.title}>Edit the description</p>
-                  <input
+                  <textarea
                     {...register("description", { required: true })}
-                    className={styles.input}
+                    className={`${styles.input} ${styles.textarea}`}
                     value={cardData.description}
                     onChange={(e) => {
                       setCardData({ ...cardData, description: e.target.value });
@@ -119,7 +119,7 @@ export default function ViewCardModal({ viewCardModalVisible, activeCard }) {
                       Enter a valid description
                     </span>
                   )}
-                  <p className={styles.title}>Enter the due date (optional)</p>
+                  <p className={styles.title}>Edit the due date (optional)</p>
                   <input
                     {...register("due_date")}
                     type="date"
@@ -180,10 +180,23 @@ export default function ViewCardModal({ viewCardModalVisible, activeCard }) {
             ) : (
               <ModalBody>
                 <p className={styles.title}>Title</p>
-                <p>{cardData ? cardData.title : ""}</p>
+                <p className={styles.value}>{cardData ? cardData.title : ""}</p>
 
                 <p className={styles.title}>Description</p>
-                <p>{cardData ? cardData.description : ""}</p>
+                <p className={`${styles.value} ${styles.textarea}`}>
+                  {cardData ? cardData.description : ""}
+                </p>
+
+                {cardData && (
+                  <>
+                    {cardData.due_date && (
+                      <>
+                        <p className={styles.title}>{"Due Date"}</p>
+                        <p className={styles.value}>{cardData.due_date}</p>
+                      </>
+                    )}
+                  </>
+                )}
 
                 <ModalFooter>
                   <button
