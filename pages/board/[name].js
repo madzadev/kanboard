@@ -49,9 +49,9 @@ const Boards = () => {
   useEffect(() => {
     if (!name) return;
     if (!activeBoard) {
-      const getBoards = async () => {
+      const getAllBoards = async () => {
         try {
-          const boards = await api.getBoards();
+          const boards = await api.getAllBoards();
           boards.documents.forEach((board, index) => {
             if (urlSlug(board.title) === name) {
               setActiveBoard(board.$id);
@@ -63,7 +63,7 @@ const Boards = () => {
           console.log(err.message);
         }
       };
-      getBoards();
+      getAllBoards();
     }
   }, [name]);
 
@@ -95,9 +95,9 @@ const Boards = () => {
     let data = {};
     const getColumns = async () => {
       try {
-        const columns = await api.fetchColumns(activeBoard);
+        const columns = await api.getColumnsInBoard(activeBoard);
         for (const column of columns.documents) {
-          const posts = await api.fetchPosts();
+          const posts = await api.getAllPosts();
           const tasks = [];
           for (const post of posts.documents) {
             if (column.$id == post.column_id) {

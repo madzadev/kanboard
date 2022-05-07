@@ -1,4 +1,4 @@
-import { Appwrite, Query } from "appwrite"; //importing from Appwrite's SDK
+import { Appwrite, Query } from "appwrite";
 
 const postsCollection = process.env.NEXT_PUBLIC_APPWRITE_POSTS_COLLECTION;
 const columnsCollection = process.env.NEXT_PUBLIC_APPWRITE_COLUMNS_COLLECTION;
@@ -6,8 +6,8 @@ const boardsCollection = process.env.NEXT_PUBLIC_APPWRITE_BOARDS_COLLECTION;
 
 const sdk = new Appwrite();
 sdk
-  .setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_URL) //set your own endpoint
-  .setProject(process.env.NEXT_PUBLIC_APPWRITE_PROJECT); //set your own project id
+  .setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_URL)
+  .setProject(process.env.NEXT_PUBLIC_APPWRITE_PROJECT);
 
 export const api = {
   login: async (mail, pass) => {
@@ -53,21 +53,24 @@ export const api = {
   createBoard: async (data) => {
     return sdk.database.createDocument(boardsCollection, "unique()", data);
   },
+  deleteBoard: (id) => {
+    return sdk.database.deleteDocument(boardsCollection, id);
+  },
   // EDIT These below
-  fetchPostsByColumnId: (columnId) => {
+  getPostsInColumn: (columnId) => {
     return sdk.database.listDocuments(postsCollection, [
       Query.equal("column_id", columnId),
     ]);
   },
-  fetchColumns: (boardId) => {
+  getColumnsInBoard: (boardId) => {
     return sdk.database.listDocuments(columnsCollection, [
       Query.equal("board_id", boardId),
     ]);
   },
-  fetchPosts: (post) => {
+  getAllPosts: () => {
     return sdk.database.listDocuments(postsCollection);
   },
-  getBoards: () => {
+  getAllBoards: () => {
     return sdk.database.listDocuments(boardsCollection);
   },
 };

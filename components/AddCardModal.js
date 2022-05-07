@@ -33,7 +33,7 @@ export default function AddCardModal({ addCardModalVisible, activeColumn }) {
 
   const onSubmit = async (data) => {
     try {
-      const posts = await api.fetchPostsByColumnId(activeColumn);
+      const posts = await api.getPostsInColumn(activeColumn);
       data["pos_index"] = posts.total;
       data["column_id"] = activeColumn;
       await api.createPost(data);

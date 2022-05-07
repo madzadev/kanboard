@@ -15,16 +15,16 @@ const SideBar = () => {
   const [boards, setBoards] = useState();
 
   useEffect(() => {
-    const getBoards = async () => {
+    const getAllBoards = async () => {
       try {
-        const boards = await api.getBoards();
+        const boards = await api.getAllBoards();
         setBoards(boards.documents);
         // router.push("/boards");
       } catch (err) {
         console.log(err.message);
       }
     };
-    getBoards();
+    getAllBoards();
   }, []);
 
   return (

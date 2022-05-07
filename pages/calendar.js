@@ -14,7 +14,7 @@ const Calendar = () => {
     const getPosts = async () => {
       try {
         let data = [];
-        const posts = await api.fetchPosts();
+        const posts = await api.getAllPosts();
         posts.documents.forEach((post, index) => {
           data.push({ title: post.title, date: post.due_date });
         });
