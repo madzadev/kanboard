@@ -56,7 +56,13 @@ export default function AddCardModal({ addCardModalVisible, activeColumn }) {
               <ModalTitle>Add a new card</ModalTitle>
             </ModalHeader>
             <ModalBody>
-              <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  handleSubmit(onSubmit);
+                }}
+                className={styles.form}
+              >
                 <p className={styles.title}>Enter the title</p>
                 <input
                   {...register("title", { required: true })}

@@ -1,5 +1,11 @@
+.wrapper {
+    display:grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 70px;
+}
+
 .header {
-    margin-bottom: 20px;
+    margin: 20px 0;
 }
 
 .stats {

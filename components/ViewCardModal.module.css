@@ -1,3 +1,17 @@
+.head {
+    display: grid;
+    grid-template-columns: auto 80px;
+    gap: 20px;
+    /* border-top: 1px solid red; */
+    width: 100%;
+    
+}
+
+.buttons{
+    display: grid;
+    grid-template-columns:1fr 1fr;
+}
+
 .form {
     display:grid;
 margin-top: 20px;
@@ -31,6 +45,7 @@ margin-top: 20px;
     padding: 10px 20px;
     width: 120px;
     border-radius: 5px;
+    float: right;
 }
 
 .cancel:hover {

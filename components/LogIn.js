@@ -31,7 +31,13 @@ const Login = () => {
   return (
     <div className={styles.wrapper}>
       <h1 className={styles.title}>Welcome to KanBoard!</h1>
-      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleSubmit(onSubmit);
+        }}
+        className={styles.form}
+      >
         <input
           {...register("email", { required: true })}
           className={styles.input}

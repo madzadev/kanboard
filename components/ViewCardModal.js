@@ -19,25 +19,56 @@ import styles from "./ViewCardModal.module.css";
 export default function ViewCardModal({ viewCardModalVisible, activeCard }) {
   const [cardData, setCardData] = useState();
   const [isOpen, setIsOpen] = useState(false);
+  const [editMode, setEditMode] = useState(false);
+  const [deleteMode, setDeleteMode] = useState(false);
   const closeModal = useCallback(() => setIsOpen(false), []);
   const router = useRouter();
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = async (id, data) => {
+    try {
+      const updatePost = await api.updatePost(id, data);
+      closeModal();
+      router.reload(window.location.pathname);
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
   useEffect(() => {
+    setEditMode(false);
+    setDeleteMode(false);
+    const getCardData = async (id) => {
+      try {
+        const data = await api.getPost(id);
+        console.log(data);
+        setCardData(data);
+      } catch (err) {
+        console.log(err.message);
+      }
+    };
+    getCardData(activeCard);
     return () => {
       setIsOpen(!isOpen);
     };
   }, [viewCardModalVisible]);
 
-  const getCardData = async (id) => {
-    try {
-      const data = await api.getPost(id);
-      console.log(data);
-      setCardData(data);
-    } catch (err) {
-      console.log(err.message);
-    }
-  };
-  getCardData(activeCard);
+  //   useEffect(() => {
+  //     const get = async (data) => {
+  //         try {
+  //           const updatePost = await api.updatePost(activeCard, data);
+  //           closeModal();
+  //           router.reload(window.location.pathname);
+  //         } catch (err) {
+  //           console.log(err.message);
+  //         }
+  //       };
+  //   }, [editMode])
 
   return (
     <div>
@@ -48,43 +79,140 @@ export default function ViewCardModal({ viewCardModalVisible, activeCard }) {
           <Modal onClose={closeModal} className={styles.wrapper}>
             {/* <h1>{addCardModalVisible}</h1> */}
             <ModalHeader>
-              <ModalTitle>Card: {cardData ? cardData.title : ""}</ModalTitle>
-              <EditButton
-                onClick={() => {
-                  console.log(activeCard);
-                }}
-              />
-              <DeleteButton
-                onClick={() => {
-                  console.log(activeCard);
-                  api.deletePost(activeCard);
-                  closeModal();
-                  router.reload(window.location.pathname);
-                }}
-              />
+              <div className={styles.head}>
+                <ModalTitle>{cardData ? cardData.title : ""}</ModalTitle>
+                <div className={styles.buttons}>
+                  <EditButton
+                    onClick={() => {
+                      setEditMode(!editMode);
+                    }}
+                  />
+                  <DeleteButton
+                    onClick={() => {
+                      console.log(activeCard);
+                      setDeleteMode(!deleteMode);
+                    }}
+                  />
+                </div>
+              </div>
             </ModalHeader>
-            <ModalBody>
-              <p className={styles.title}>Title</p>
-              <p>{cardData ? cardData.title : ""}</p>
-
-              <p className={styles.title}>Description</p>
-              <p>{cardData ? cardData.description : ""}</p>
-
-              <ModalFooter>
-                <button
-                  onClick={(e) => {
+            {editMode ? (
+              <ModalBody>
+                <form
+                  onSubmit={(e) => {
                     e.preventDefault();
-                    closeModal();
+                    handleSubmit(onSubmit(activeCard, cardData));
                   }}
-                  className={styles.cancel}
+                  className={styles.form}
                 >
-                  Close
-                </button>
-                {/* <button type="submit" className={styles.add}>
+                  <p className={styles.title}>Edit the title</p>
+                  <input
+                    {...register("title", { required: true })}
+                    className={styles.input}
+                    value={cardData.title}
+                    onChange={(e) => {
+                      setCardData({ ...cardData, title: e.target.value });
+                    }}
+                  />
+                  {errors.title && (
+                    <span className={styles.error}>Enter a valid title</span>
+                  )}
+                  <p className={styles.title}>Edit the description</p>
+                  <input
+                    {...register("description", { required: true })}
+                    className={styles.input}
+                    value={cardData.description}
+                    onChange={(e) => {
+                      setCardData({ ...cardData, description: e.target.value });
+                    }}
+                  />
+                  {errors.description && (
+                    <span className={styles.error}>
+                      Enter a valid description
+                    </span>
+                  )}
+                  <p className={styles.title}>Enter the due date (optional)</p>
+                  <input
+                    {...register("due_date")}
+                    type="date"
+                    className={styles.input}
+                    value={cardData.due_date ? cardData.due_date : ""}
+                    onChange={(e) => {
+                      setCardData({ ...cardData, due_date: e.target.value });
+                    }}
+                  />
+                  {errors.due_date && (
+                    <span className={styles.error}>Enter a valid due date</span>
+                  )}
+                  {/* <input type="submit" className={styles.submit} /> */}
+                  <ModalFooter>
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        closeModal();
+                      }}
+                      className={styles.cancel}
+                    >
+                      Cancel
+                    </button>
+                    <button type="submit" className={styles.add}>
+                      Save
+                    </button>
+                  </ModalFooter>
+                </form>
+              </ModalBody>
+            ) : deleteMode ? (
+              <ModalBody>
+                <p className={styles.title}>
+                  The card will be permanently deleted!
+                </p>
+                <p>Proceed?</p>
+                <ModalFooter>
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      closeModal();
+                    }}
+                    className={styles.cancel}
+                  >
+                    Close
+                  </button>
+                  <button
+                    className={styles.add}
+                    onClick={() => {
+                      api.deletePost(activeCard);
+                      closeModal();
+                      router.reload(window.location.pathname);
+                    }}
+                  >
+                    Accept
+                  </button>
+                </ModalFooter>
+              </ModalBody>
+            ) : (
+              <ModalBody>
+                <p className={styles.title}>Title</p>
+                <p>{cardData ? cardData.title : ""}</p>
+
+                <p className={styles.title}>Description</p>
+                <p>{cardData ? cardData.description : ""}</p>
+
+                <ModalFooter>
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      closeModal();
+                    }}
+                    className={styles.cancel}
+                  >
+                    Close
+                  </button>
+                  {/* <button type="submit" className={styles.add}>
                   Add
                 </button> */}
-              </ModalFooter>
-            </ModalBody>
+                </ModalFooter>
+              </ModalBody>
+            )}
           </Modal>
         )}
       </ModalTransition>

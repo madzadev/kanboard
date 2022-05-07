@@ -57,7 +57,13 @@ export default function AddColumnModal({ addColumnModalVisible }) {
               <ModalTitle>Add a new column</ModalTitle>
             </ModalHeader>
             <ModalBody>
-              <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  handleSubmit(onSubmit);
+                }}
+                className={styles.form}
+              >
                 <p className={styles.title}>Enter the title</p>
                 <input
                   {...register("title", { required: true })}

@@ -56,7 +56,13 @@ export default function AddBoardModal({ addBoardModalVisible }) {
               <ModalTitle>Add a new board</ModalTitle>
             </ModalHeader>
             <ModalBody>
-              <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  handleSubmit(onSubmit);
+                }}
+                className={styles.form}
+              >
                 <p className={styles.title}>Enter the title</p>
                 <input
                   {...register("title", { required: true })}
