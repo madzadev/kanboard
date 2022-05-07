@@ -1,6 +1,5 @@
 import { useCallback, useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useRouter } from "next/router";
 
 import Modal, {
   ModalBody,
@@ -9,16 +8,17 @@ import Modal, {
   ModalTitle,
   ModalTransition,
 } from "@atlaskit/modal-dialog";
+
+import EditButton from "./EditButton";
+import DeleteButton from "./DeleteButton";
 import { api } from "../appwrite";
 
-import styles from "./AddCardModal.module.css";
+import styles from "./ViewCardModal.module.css";
 
 export default function ViewCardModal({ viewCardModalVisible, activeCard }) {
   const [cardData, setCardData] = useState();
   const [isOpen, setIsOpen] = useState(false);
-  //   const openModal = useCallback(() => setIsOpen(true), []);
   const closeModal = useCallback(() => setIsOpen(false), []);
-  const router = useRouter();
 
   useEffect(() => {
     return () => {
@@ -31,7 +31,6 @@ export default function ViewCardModal({ viewCardModalVisible, activeCard }) {
       const data = await api.fetchPostById(id);
       console.log(data);
       setCardData(data);
-      //   closeModal();
     } catch (err) {
       console.log(err.message);
     }
@@ -48,10 +47,23 @@ export default function ViewCardModal({ viewCardModalVisible, activeCard }) {
             {/* <h1>{addCardModalVisible}</h1> */}
             <ModalHeader>
               <ModalTitle>Card: {cardData ? cardData.title : ""}</ModalTitle>
+              <EditButton
+                onClick={() => {
+                  console.log(activeCard);
+                }}
+              />
+              <DeleteButton
+                onClick={() => {
+                  console.log(activeCard);
+                }}
+              />
             </ModalHeader>
             <ModalBody>
               <p className={styles.title}>Title</p>
               <p>{cardData ? cardData.title : ""}</p>
+
+              <p className={styles.title}>Description</p>
+              <p>{cardData ? cardData.description : ""}</p>
 
               <ModalFooter>
                 <button
@@ -61,19 +73,13 @@ export default function ViewCardModal({ viewCardModalVisible, activeCard }) {
                   }}
                   className={styles.cancel}
                 >
-                  Cancel
+                  Close
                 </button>
-                <button type="submit" className={styles.add}>
+                {/* <button type="submit" className={styles.add}>
                   Add
-                </button>
+                </button> */}
               </ModalFooter>
             </ModalBody>
-            {/* <ModalFooter>
-              <button onClick={closeModal}>Cancel</button>
-              <button onClick={closeModal} autoFocus>
-                Add
-              </button>
-            </ModalFooter> */}
           </Modal>
         )}
       </ModalTransition>

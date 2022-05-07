@@ -215,7 +215,9 @@ const Boards = () => {
                                   index={index}
                                   onClick={() => {
                                     setActiveCard(item.$id);
-                                    setViewCardModalVisible(true);
+                                    setViewCardModalVisible(
+                                      !viewCardModalVisible
+                                    );
                                   }}
                                 />
                               );
