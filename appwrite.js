@@ -24,16 +24,7 @@ export const api = {
       const user = await api.getAccount();
       console.log(`Got user: ${user.name}`);
       return user;
-      //   setUser(user);
-      //   state.update((n) => {
-      //     n.user = user;
-      //     return n;
-      //   });
     } catch (error) {
-      //   state.update((n) => {
-      //     n.user = null;
-      //     return n;
-      //   });
       console.log(`No user found`);
       throw error;
     }
@@ -48,6 +39,9 @@ export const api = {
   },
   fetchPostById: (documentId) => {
     return sdk.database.getDocument(postsCollection, documentId);
+  },
+  deletePostById: (documentId) => {
+    return sdk.database.deleteDocument(postsCollection, documentId);
   },
   fetchPostsByColumnId: (columnId) => {
     return sdk.database.listDocuments(postsCollection, [

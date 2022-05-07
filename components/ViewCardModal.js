@@ -1,5 +1,6 @@
 import { useCallback, useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/router";
 
 import Modal, {
   ModalBody,
@@ -19,6 +20,7 @@ export default function ViewCardModal({ viewCardModalVisible, activeCard }) {
   const [cardData, setCardData] = useState();
   const [isOpen, setIsOpen] = useState(false);
   const closeModal = useCallback(() => setIsOpen(false), []);
+  const router = useRouter();
 
   useEffect(() => {
     return () => {
@@ -55,6 +57,9 @@ export default function ViewCardModal({ viewCardModalVisible, activeCard }) {
               <DeleteButton
                 onClick={() => {
                   console.log(activeCard);
+                  api.deletePostById(activeCard);
+                  closeModal();
+                  router.reload(window.location.pathname);
                 }}
               />
             </ModalHeader>
