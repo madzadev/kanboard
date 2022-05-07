@@ -30,7 +30,7 @@ export default function ViewCardModal({ viewCardModalVisible, activeCard }) {
 
   const getCardData = async (id) => {
     try {
-      const data = await api.fetchPostById(id);
+      const data = await api.getPost(id);
       console.log(data);
       setCardData(data);
     } catch (err) {
@@ -57,7 +57,7 @@ export default function ViewCardModal({ viewCardModalVisible, activeCard }) {
               <DeleteButton
                 onClick={() => {
                   console.log(activeCard);
-                  api.deletePostById(activeCard);
+                  api.deletePost(activeCard);
                   closeModal();
                   router.reload(window.location.pathname);
                 }}

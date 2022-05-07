@@ -11,7 +11,7 @@ const TaskCard = ({ key, item, index, onClick }) => {
     if (activeCard) {
       const onSubmit = async () => {
         try {
-          const cardData = await api.fetchPostById(activeCard);
+          const cardData = await api.getPost(activeCard);
 
           setUser($id);
           router.push("/dashboard");

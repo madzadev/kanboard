@@ -10,14 +10,6 @@ sdk
   .setProject(process.env.NEXT_PUBLIC_APPWRITE_PROJECT); //set your own project id
 
 export const api = {
-  register: async (name, mail, pass) => {
-    try {
-      await sdk.account.create("unique()", mail, pass, name);
-      await api.login(mail, pass);
-    } catch (error) {
-      throw error;
-    }
-  },
   login: async (mail, pass) => {
     try {
       await sdk.account.createSession(mail, pass);
@@ -29,7 +21,6 @@ export const api = {
       throw error;
     }
   },
-  getAccount: async () => sdk.account.get(),
   logout: async () => {
     try {
       await sdk.account.deleteSession("current");
@@ -37,12 +28,32 @@ export const api = {
       throw error;
     }
   },
-  fetchPostById: (documentId) => {
-    return sdk.database.getDocument(postsCollection, documentId);
+  getAccount: async () => sdk.account.get(),
+  getPost: (id) => {
+    return sdk.database.getDocument(postsCollection, id);
   },
-  deletePostById: (documentId) => {
-    return sdk.database.deleteDocument(postsCollection, documentId);
+  createPost: async (data) => {
+    return sdk.database.createDocument(postsCollection, "unique()", data);
   },
+  updatePost: async (id, data) => {
+    return sdk.database.updateDocument(postsCollection, id, data);
+  },
+  deletePost: (id) => {
+    return sdk.database.deleteDocument(postsCollection, id);
+  },
+  createColumn: async (data) => {
+    return sdk.database.createDocument(columnsCollection, "unique()", data);
+  },
+  deleteColumn: (id) => {
+    return sdk.database.deleteDocument(columnsCollection, id);
+  },
+  getBoard: (id) => {
+    return sdk.database.getDocument(boardsCollection, id);
+  },
+  createBoard: async (data) => {
+    return sdk.database.createDocument(boardsCollection, "unique()", data);
+  },
+  // EDIT These below
   fetchPostsByColumnId: (columnId) => {
     return sdk.database.listDocuments(postsCollection, [
       Query.equal("column_id", columnId),
@@ -58,21 +69,5 @@ export const api = {
   },
   getBoards: () => {
     return sdk.database.listDocuments(boardsCollection);
-  },
-  getBoardById: (boardId) => {
-    return sdk.database.getDocument(boardsCollection, boardId);
-  },
-
-  createPost: async (data) => {
-    return sdk.database.createDocument(postsCollection, "unique()", data);
-  },
-  updatePost: async (id, data) => {
-    return sdk.database.updateDocument(postsCollection, id, data);
-  },
-  createColumn: async (data) => {
-    return sdk.database.createDocument(columnsCollection, "unique()", data);
-  },
-  createBoard: async (data) => {
-    return sdk.database.createDocument(boardsCollection, "unique()", data);
   },
 };

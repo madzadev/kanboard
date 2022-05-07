@@ -15,6 +15,9 @@ const TaskCard = dynamic(() => import("../../components/TaskCard"), {
 import AddCardModal from "../../components/AddCardModal";
 import ViewCardModal from "../../components/ViewCardModal";
 import AddColumnModal from "../../components/AddColumnModal";
+import DeleteWarningModal from "../../components/DeleteWarningModal";
+import DeleteButton from "../../components/DeleteButton";
+
 import Search from "../../components/Search";
 
 import { api } from "../../appwrite";
@@ -29,6 +32,8 @@ const Boards = () => {
   const [addCardModalVisible, setAddCardModalVisible] = useState(false);
   const [viewCardModalVisible, setViewCardModalVisible] = useState(false);
   const [addColumnModalVisible, setAddColumnModalVisible] = useState(false);
+  const [deleteWarningModalVisible, setDeleteWarningModalVisible] =
+    useState(false);
 
   const [activeCard, setActiveCard] = useState();
   const [activeColumn, setActiveColumn] = useState();
@@ -77,7 +82,7 @@ const Boards = () => {
 
     const getBoardData = async () => {
       try {
-        const board = await api.getBoardById(activeBoard);
+        const board = await api.getBoard(activeBoard);
         setBoardTitle(board.title);
         setBoardDescription(board.description);
       } catch (err) {
@@ -158,6 +163,10 @@ const Boards = () => {
         activeCard={activeCard}
       />
       <AddColumnModal addColumnModalVisible={addColumnModalVisible} />
+      <DeleteWarningModal
+        deleteWarningModalVisible={deleteWarningModalVisible}
+        activeColumn={activeColumn}
+      />
       <div className={styles.header}>
         <div className={styles.name}>
           <h2>{boardTitle}</h2>
@@ -188,7 +197,16 @@ const Boards = () => {
                         <div className={styles.head}>
                           <p className={styles.title}>{column.title}</p>
                           <p>{column.items.length}</p>
-                          {!column.items.length && <p>🗑️</p>}
+                          {!column.items.length && (
+                            <DeleteButton
+                              onClick={() => {
+                                setActiveColumn(columnId);
+                                setDeleteWarningModalVisible(
+                                  !deleteWarningModalVisible
+                                );
+                              }}
+                            />
+                          )}
                         </div>
                         <div
                           className={styles.add}
