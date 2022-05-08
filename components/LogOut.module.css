@@ -5,7 +5,7 @@
 }
 
 .button {
-    background-color: var(--delete);
+    background-color: var(--deleteHover);
     border: none;
     border-radius: 5px;
 }

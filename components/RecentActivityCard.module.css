@@ -9,20 +9,20 @@
 
 .add {
     background-color:var(--add);
-    color: var(--addText);
-    /* border: 1px solid var(--addHover); */
+    /* color: var(--addText); */
+    background-color: white;
 }
 
 .edit {
     background-color: var(--edit);
-    color: var(--editText);
-    /* border: 1px solid var(--editHover); */
+    /* color: var(--editText); */
+    background-color: white;
 }
 
 .delete {
     background-color:var(--delete);
-    color: var(--deleteText);
-    /* border: 1px solid var(--deleteHover); */
+    /* color: var(--deleteText); */
+    background-color: white;
 }
 
 .time {

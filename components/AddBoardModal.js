@@ -44,8 +44,10 @@ export default function AddBoardModal({ addBoardModalVisible }) {
           timestamp: Date(),
         })
       );
-      closeModal();
+      console.log(`/board/${urlSlug(data.title)}`);
       router.push(`/board/${urlSlug(data.title)}`);
+      // router.reload(`/board/${urlSlug(data.title)}`);
+      closeModal();
     } catch (err) {
       console.log(err.message);
     }

@@ -1,8 +1,8 @@
 .wrapper {
-    background-color: white;
     border-radius:5px;
     text-align: center;
     padding: 10px 20px;
     margin-bottom: 15px;
     background-color:var(--add);
+    background-color: white;
 }
