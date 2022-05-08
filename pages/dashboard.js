@@ -9,19 +9,21 @@ import { api } from "../appwrite";
 import styles from "../styles/Dashboard.module.css";
 
 const Dashboard = () => {
-  const [totalBoards, setTotalBoards] = useState(0);
-  const [totalColumns, setTotalColumns] = useState(0);
-  const [totalPosts, setTotalPosts] = useState(0);
+  const [totalBoards, setTotalBoards] = useState([]);
+  const [totalColumns, setTotalColumns] = useState([]);
+  const [totalPosts, setTotalPosts] = useState([]);
+  // const [events, setEvents] = useState();
 
   useEffect(() => {
     const getStats = async () => {
       try {
         const boards = await api.getAllBoards();
-        setTotalBoards(boards.documents.length);
+        setTotalBoards(boards.documents);
         const columns = await api.getAllColumns();
-        setTotalColumns(columns.documents.length);
+        setTotalColumns(columns.documents);
         const posts = await api.getAllPosts();
-        setTotalPosts(posts.documents.length);
+        setTotalPosts(posts.documents);
+        console.log(posts.documents);
       } catch (err) {
         console.log(err.message);
       }
@@ -35,21 +37,26 @@ const Dashboard = () => {
         <div>
           <h1 className={styles.header}>⭐ My overview</h1>
           <div className={styles.stats}>
-            <StatsCard score={totalBoards} title="Total boards" />
-            <StatsCard score={totalColumns} title="Total columns" />
-            <StatsCard score={totalPosts} title="Total tasks" />
+            <StatsCard score={totalBoards.length} title="Total boards" />
+            <StatsCard score={totalColumns.length} title="Total columns" />
+            <StatsCard score={totalPosts.length} title="Total tasks" />
           </div>
           <h1 className={styles.header}>Recent activity</h1>
         </div>
         <div>
           <h1 className={styles.header}>Upcoming tasks</h1>
-          <UpcomingTaskCard />
-          <UpcomingTaskCard />
-          <UpcomingTaskCard />
-          <UpcomingTaskCard />
-          <UpcomingTaskCard />
-          <UpcomingTaskCard />
-          <UpcomingTaskCard />
+          {totalPosts
+            .sort((a, b) => new Date(a.due_date) - new Date(b.due_date))
+            .slice(0, 7)
+            .map((post, index) => {
+              return (
+                <UpcomingTaskCard
+                  key={index}
+                  task={post.title}
+                  time={post.due_date}
+                />
+              );
+            })}
         </div>
       </div>
     </AuthWrapper>

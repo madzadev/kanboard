@@ -3,8 +3,8 @@ import styles from "./UpcomingTaskCard.module.css";
 const UpcomingTaskCard = ({ task, time }) => {
   return (
     <div className={styles.wrapper}>
-      <h3>Read a book about whales</h3>
-      <p>In 2 days</p>
+      <h3>{task}</h3>
+      <p>{time}</p>
     </div>
   );
 };
