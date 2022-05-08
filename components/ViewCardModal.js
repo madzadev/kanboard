@@ -33,6 +33,14 @@ export default function ViewCardModal({ viewCardModalVisible, activeCard }) {
   const onSubmit = async (id, data) => {
     try {
       const updatePost = await api.updatePost(id, data);
+      await api.createActivity(
+        JSON.stringify({
+          title: data.title,
+          type: 3,
+          action: 2,
+          timestamp: Date(),
+        })
+      );
       closeModal();
       router.reload(window.location.pathname);
     } catch (err) {

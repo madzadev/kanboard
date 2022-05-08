@@ -37,6 +37,14 @@ export default function AddCardModal({ addCardModalVisible, activeColumn }) {
       data["pos_index"] = posts.total;
       data["column_id"] = activeColumn;
       await api.createPost(data);
+      await api.createActivity(
+        JSON.stringify({
+          title: data.title,
+          type: 3,
+          action: 1,
+          timestamp: Date(),
+        })
+      );
       closeModal();
       router.reload(window.location.pathname);
     } catch (err) {

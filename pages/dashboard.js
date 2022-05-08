@@ -4,6 +4,7 @@ import AuthWrapper from "../components/AuthWrapper";
 import StatsCard from "../components/StatsCard";
 import UpcomingTaskCard from "../components/UpcomingTaskCard";
 import PreviousTaskCard from "../components/PreviousTaskCard";
+import RecentActivityCard from "../components/RecentActivityCard";
 
 import { api } from "../appwrite";
 
@@ -13,6 +14,7 @@ const Dashboard = () => {
   const [totalBoards, setTotalBoards] = useState([]);
   const [totalColumns, setTotalColumns] = useState([]);
   const [totalPosts, setTotalPosts] = useState([]);
+  const [totalActivities, setTotalActivities] = useState([]);
 
   useEffect(() => {
     const getStats = async () => {
@@ -23,7 +25,8 @@ const Dashboard = () => {
         setTotalColumns(columns.documents);
         const posts = await api.getAllPosts();
         setTotalPosts(posts.documents);
-        console.log(posts.documents);
+        const activities = await api.getAllActivities();
+        setTotalActivities(activities.documents);
       } catch (err) {
         console.log(err.message);
       }
@@ -42,6 +45,22 @@ const Dashboard = () => {
             <StatsCard score={totalPosts.length} title="Total tasks" />
           </div>
           <h1 className={styles.header}>Recent activity</h1>
+          <div className={styles.activity}>
+            {totalActivities
+              .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
+              .slice(0, 6)
+              .map((activity, index) => {
+                return (
+                  <RecentActivityCard
+                    key={index}
+                    type={activity.type}
+                    title={activity.title}
+                    time={activity.timestamp}
+                    action={activity.action}
+                  />
+                );
+              })}
+          </div>
         </div>
         <div>
           <h1 className={styles.header}>🚀 Upcoming tasks</h1>

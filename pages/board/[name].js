@@ -73,6 +73,14 @@ const Boards = () => {
         item.column_id = activeColumn;
         item.pos_index = index;
         await api.updatePost(item.$id, item);
+        // await api.createActivity(
+        //   JSON.stringify({
+        //     title: item.title,
+        //     type: 3,
+        //     action: 3,
+        //     timestamp: Date(),
+        //   })
+        // );
       });
     }
   }, [columns]);
@@ -149,7 +157,7 @@ const Boards = () => {
         },
       });
     }
-
+    console.log(destination);
     setActiveColumn(destination.droppableId);
   };
   return (

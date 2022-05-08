@@ -80,4 +80,7 @@ export const api = {
   getAllBoards: () => {
     return sdk.database.listDocuments(boardsCollection);
   },
+  getAllActivities: () => {
+    return sdk.database.listDocuments(activitiesCollection);
+  },
 };

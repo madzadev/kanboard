@@ -40,9 +40,9 @@ export default function AddBoardModal({ addBoardModalVisible }) {
       await api.createActivity(
         JSON.stringify({
           title: data.title,
-          type: "board",
-          action: "create",
-          timestamp: Date.now(),
+          type: 1,
+          action: 1,
+          timestamp: Date(),
         })
       );
       closeModal();

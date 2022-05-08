@@ -38,6 +38,14 @@ export default function AddColumnModal({ addColumnModalVisible }) {
     data["board_id"] = activeBoard;
     try {
       await api.createColumn(data);
+      await api.createActivity(
+        JSON.stringify({
+          title: data.title,
+          type: 2,
+          action: 1,
+          timestamp: Date(),
+        })
+      );
       closeModal();
       router.reload(window.location.pathname);
     } catch (err) {
