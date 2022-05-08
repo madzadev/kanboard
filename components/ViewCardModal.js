@@ -66,12 +66,8 @@ export default function ViewCardModal({ viewCardModalVisible, activeCard }) {
     };
   }, [viewCardModalVisible]);
 
-  const deletehandler = () => {};
-
   return (
     <div>
-      {/* <button onClick={openModal}>Open modal</button> */}
-
       <ModalTransition>
         {isOpen && (
           <Modal onClose={closeModal} className={styles.wrapper}>
@@ -142,7 +138,6 @@ export default function ViewCardModal({ viewCardModalVisible, activeCard }) {
                   {errors.due_date && (
                     <span className={styles.error}>Enter a valid due date</span>
                   )}
-                  {/* <input type="submit" className={styles.submit} /> */}
                   <ModalFooter>
                     <button
                       onClick={(e) => {

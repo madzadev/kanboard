@@ -38,7 +38,7 @@ const Dashboard = () => {
     <AuthWrapper>
       <div className={styles.wrapper}>
         <div>
-          <h1 className={styles.header}>⭐ My overview</h1>
+          <h1 className={styles.header}>My overview</h1>
           <div className={styles.stats}>
             <StatsCard score={totalBoards.length} title="Total boards" />
             <StatsCard score={totalColumns.length} title="Total columns" />
@@ -63,7 +63,7 @@ const Dashboard = () => {
           </div>
         </div>
         <div>
-          <h1 className={styles.header}>🚀 Upcoming tasks</h1>
+          <h1 className={styles.header}>Upcoming tasks</h1>
           {totalPosts
             .filter((a) => a.due_date)
             .filter((a) => new Date() < new Date(a.due_date))
@@ -78,7 +78,7 @@ const Dashboard = () => {
                 />
               );
             })}
-          <h1 className={styles.header}>✅ Previous tasks</h1>
+          <h1 className={styles.header}>Previous tasks</h1>
           {totalPosts
             .filter((a) => a.due_date)
             .filter((a) => new Date() > new Date(a.due_date))
