@@ -3,6 +3,8 @@ import { Appwrite, Query } from "appwrite";
 const postsCollection = process.env.NEXT_PUBLIC_APPWRITE_POSTS_COLLECTION;
 const columnsCollection = process.env.NEXT_PUBLIC_APPWRITE_COLUMNS_COLLECTION;
 const boardsCollection = process.env.NEXT_PUBLIC_APPWRITE_BOARDS_COLLECTION;
+const activitiesCollection =
+  process.env.NEXT_PUBLIC_APPWRITE_ACTIVITIES_COLLECTION;
 
 const sdk = new Appwrite();
 sdk
@@ -55,6 +57,9 @@ export const api = {
   },
   deleteBoard: (id) => {
     return sdk.database.deleteDocument(boardsCollection, id);
+  },
+  createActivity: async (data) => {
+    return sdk.database.createDocument(activitiesCollection, "unique()", data);
   },
   getPostsInColumn: (columnId) => {
     return sdk.database.listDocuments(postsCollection, [

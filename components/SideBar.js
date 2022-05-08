@@ -19,13 +19,11 @@ const SideBar = () => {
     const getAllBoards = async () => {
       try {
         const boards = await api.getAllBoards();
-        // console.log(boards);
-        boards.documents.forEach(async (board, index) => {
+        for (const board of boards.documents) {
           const columns = await api.getColumnsInBoard(board.$id);
-          console.log(columns);
           board["columns"] = columns.total;
           setBoards((boards) => [...boards, board]);
-        });
+        }
       } catch (err) {
         console.log(err.message);
       }
