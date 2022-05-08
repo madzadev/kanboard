@@ -24,8 +24,9 @@ const RecentActivityCard = ({ title, type, action, time }) => {
           ? "edited"
           : action == 3
           ? "moved"
-          : "deleted"}{" "}
-        {type == 1 ? "board" : type == 2 ? "column" : "card"} {title}
+          : "deleted"}
+        {" a "}
+        {type == 1 ? "board" : type == 2 ? "column" : "card"} "{title}"
       </h3>
       <p>{dayjs(time).fromNow()}</p>
     </div>

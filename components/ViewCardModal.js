@@ -66,6 +66,8 @@ export default function ViewCardModal({ viewCardModalVisible, activeCard }) {
     };
   }, [viewCardModalVisible]);
 
+  const deletehandler = () => {};
+
   return (
     <div>
       {/* <button onClick={openModal}>Open modal</button> */}
@@ -175,7 +177,16 @@ export default function ViewCardModal({ viewCardModalVisible, activeCard }) {
                   </button>
                   <button
                     className={styles.add}
-                    onClick={() => {
+                    onClick={async () => {
+                      const card = await api.getPost(activeCard);
+                      await api.createActivity(
+                        JSON.stringify({
+                          title: card.title,
+                          type: 3,
+                          action: 4,
+                          timestamp: Date(),
+                        })
+                      );
                       api.deletePost(activeCard);
                       closeModal();
                       router.reload(window.location.pathname);

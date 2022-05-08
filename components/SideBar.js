@@ -5,6 +5,7 @@ import { useRecoilState } from "recoil";
 import { boardState } from "../store/board";
 
 import AddBoardModal from "./AddBoardModal";
+import DeleteBoardModal from "./DeleteBoardModal";
 import DeleteButton from "./DeleteButton";
 
 import { api } from "../appwrite";
@@ -12,6 +13,7 @@ import styles from "./SideBar.module.css";
 
 const SideBar = () => {
   const [addBoardModalVisible, setAddBoardModalVisible] = useState(false);
+  const [deleteBoardModalVisible, setDeleteBoardModalVisible] = useState(false);
   const [activeBoard, setActiveBoard] = useRecoilState(boardState);
   const [boards, setBoards] = useState([]);
 
@@ -34,6 +36,10 @@ const SideBar = () => {
   return (
     <div className={styles.wrapper}>
       <AddBoardModal addBoardModalVisible={addBoardModalVisible} />
+      <DeleteBoardModal
+        deleteBoardModalVisible={deleteBoardModalVisible}
+        activeBoard={activeBoard}
+      />
       <Link href="/dashboard">
         <h3 className={styles.page}>🏡 Dashboard</h3>
       </Link>
@@ -62,7 +68,8 @@ const SideBar = () => {
               {!board.columns && (
                 <DeleteButton
                   onClick={() => {
-                    api.deleteBoard(board.$id);
+                    setDeleteBoardModalVisible(!deleteBoardModalVisible);
+                    setActiveBoard(board.$id);
                     // router.reload(window.location.pathname);
                   }}
                 />

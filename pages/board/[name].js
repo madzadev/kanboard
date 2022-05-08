@@ -15,7 +15,7 @@ const TaskCard = dynamic(() => import("../../components/TaskCard"), {
 import AddCardModal from "../../components/AddCardModal";
 import ViewCardModal from "../../components/ViewCardModal";
 import AddColumnModal from "../../components/AddColumnModal";
-import DeleteWarningModal from "../../components/DeleteWarningModal";
+import DeleteColumnModal from "../../components/DeleteColumnModal";
 import DeleteButton from "../../components/DeleteButton";
 
 import Search from "../../components/Search";
@@ -32,7 +32,7 @@ const Boards = () => {
   const [addCardModalVisible, setAddCardModalVisible] = useState(false);
   const [viewCardModalVisible, setViewCardModalVisible] = useState(false);
   const [addColumnModalVisible, setAddColumnModalVisible] = useState(false);
-  const [deleteWarningModalVisible, setDeleteWarningModalVisible] =
+  const [deleteColumnModalVisible, setDeleteColumnModalVisible] =
     useState(false);
 
   const [activeCard, setActiveCard] = useState();
@@ -171,8 +171,8 @@ const Boards = () => {
         activeCard={activeCard}
       />
       <AddColumnModal addColumnModalVisible={addColumnModalVisible} />
-      <DeleteWarningModal
-        deleteWarningModalVisible={deleteWarningModalVisible}
+      <DeleteColumnModal
+        deleteColumnModalVisible={deleteColumnModalVisible}
         activeColumn={activeColumn}
       />
       <div className={styles.header}>
@@ -209,8 +209,8 @@ const Boards = () => {
                             <DeleteButton
                               onClick={() => {
                                 setActiveColumn(columnId);
-                                setDeleteWarningModalVisible(
-                                  !deleteWarningModalVisible
+                                setDeleteColumnModalVisible(
+                                  !deleteColumnModalVisible
                                 );
                               }}
                             />

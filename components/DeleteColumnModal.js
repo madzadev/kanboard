@@ -15,13 +15,11 @@ import { api } from "../appwrite";
 
 import styles from "./AddColumnModal.module.css";
 
-export default function DeleteWarningModal({
-  deleteWarningModalVisible,
+export default function DeleteColumnModal({
+  deleteColumnModalVisible,
   activeColumn,
 }) {
-  //   const [activeColumn, setActiveBoard] = useRecoilState(boardState);
   const [isOpen, setIsOpen] = useState(false);
-  //   const openModal = useCallback(() => setIsOpen(true), []);
   const closeModal = useCallback(() => setIsOpen(false), []);
 
   const router = useRouter();
@@ -31,10 +29,19 @@ export default function DeleteWarningModal({
     return () => {
       setIsOpen(!isOpen);
     };
-  }, [deleteWarningModalVisible]);
+  }, [deleteColumnModalVisible]);
 
   const onSubmit = async (id) => {
     try {
+      const column = await api.getColumn(id);
+      await api.createActivity(
+        JSON.stringify({
+          title: column.title,
+          type: 2,
+          action: 4,
+          timestamp: Date(),
+        })
+      );
       await api.deleteColumn(id);
       closeModal();
       router.reload(window.location.pathname);

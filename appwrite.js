@@ -43,6 +43,9 @@ export const api = {
   deletePost: (id) => {
     return sdk.database.deleteDocument(postsCollection, id);
   },
+  getColumn: (id) => {
+    return sdk.database.getDocument(columnsCollection, id);
+  },
   createColumn: async (data) => {
     return sdk.database.createDocument(columnsCollection, "unique()", data);
   },
