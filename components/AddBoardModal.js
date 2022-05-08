@@ -37,6 +37,14 @@ export default function AddBoardModal({ addBoardModalVisible }) {
   const onSubmit = async (data) => {
     try {
       await api.createBoard(data);
+      await api.createActivity(
+        JSON.stringify({
+          title: data.title,
+          type: "board",
+          action: "create",
+          timestamp: Date.now(),
+        })
+      );
       closeModal();
       router.push(`/board/${urlSlug(data.title)}`);
     } catch (err) {
@@ -56,13 +64,7 @@ export default function AddBoardModal({ addBoardModalVisible }) {
               <ModalTitle>Add a new board</ModalTitle>
             </ModalHeader>
             <ModalBody>
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  handleSubmit(onSubmit);
-                }}
-                className={styles.form}
-              >
+              <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
                 <p className={styles.title}>Enter the title</p>
                 <input
                   {...register("title", { required: true })}
