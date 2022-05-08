@@ -11,6 +11,12 @@
   --add: rgb(218, 252, 218);
   --addHover: rgb(188, 252, 188);
   --addText: #10957d;
+  --edit: rgb(252, 244, 218);
+  --editHover: rgb(252, 248, 188);
+  --editText: #a9ac1e;
+  --delete: rgb(255, 147, 128);
+  --deleteHover: rgb(255, 120, 96);
+  --deleteText: rgb(124, 19, 0);
 }
 
 a {

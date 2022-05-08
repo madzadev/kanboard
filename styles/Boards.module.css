@@ -16,11 +16,11 @@ gap: 20px;
 
 .new {
   padding: 5px 0;
-    background-color: rgb(252, 244, 218);
+    background-color: var(--edit);
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
     text-align: center;
-    color: #939510;
+    color: var(--editText);
   height: 30px;
   width: 300px;
   margin-top: 44px;
@@ -28,7 +28,7 @@ gap: 20px;
 
 .new:hover {
   cursor: pointer;
-  background-color: rgb(252, 248, 188);
+  background-color: var(--editHover);
 }
 
 .column {

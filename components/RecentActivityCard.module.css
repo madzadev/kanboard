@@ -10,9 +10,9 @@
 }
 
 .edit {
-    background-color:rgb(252, 248, 188);
+    background-color: var(--edit);
 }
 
 .delete {
-    background-color:rgb(255, 147, 128);
+    background-color:var(--delete);
 }

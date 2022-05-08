@@ -1,12 +1,8 @@
 .wrapper {
-    /* background-color: rgb(255, 147, 128); */
-    /* padding: 10px; */
-    border-radius: 5px;
-   
+    border-radius: 5px; 
 }
 
 .wrapper:hover {
-/* background-color: rgb(255, 120, 96); */
-cursor: pointer;
+    cursor: pointer;
 }
 

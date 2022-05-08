@@ -2,7 +2,6 @@
     display: grid;
     grid-template-columns: auto 80px;
     gap: 20px;
-    /* border-top: 1px solid red; */
     width: 100%;
     
 }
@@ -14,7 +13,6 @@
 
 .form {
     display:grid;
-/* margin-top: 20px; */
 }
 
 .title {
@@ -27,7 +25,6 @@
     padding: 10px 20px;
     border-radius: 5px;
     background-color:#F5F4F7 ; 
-    /* border: none; */
 }
 
 .input {
@@ -48,12 +45,12 @@
 }
 
 .error {
-    color: tomato;
+    color: var(--deleteText);
     margin-bottom: 10px;
 }
 
 .cancel {
-    background-color:rgb(255, 147, 128);
+    background-color:var(--delete);
     border: none;
     padding: 10px 20px;
     width: 120px;
@@ -62,7 +59,7 @@
 }
 
 .cancel:hover {
-    background-color:rgb(255, 120, 96);
+    background-color:var(--deleteHover);
     cursor: pointer;
 }
 

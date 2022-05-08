@@ -5,13 +5,12 @@
 }
 
 .button {
-    background-color: rgb(255, 141, 121);
+    background-color: var(--delete);
     border: none;
     border-radius: 5px;
-    /* border: 1px solid crimson; */
 }
 
 .button:hover {
-    background-color: rgb(255, 106, 80);
+    background-color: var(--deleteHover);
     cursor: pointer;
 }

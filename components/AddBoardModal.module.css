@@ -22,12 +22,12 @@ margin-top: 20px;
 }
 
 .error {
-    color: tomato;
+    color: var(--deleteText);
     margin-bottom: 10px;
 }
 
 .cancel {
-    background-color:rgb(255, 147, 128);
+    background-color: var(--delete);
     border: none;
     padding: 10px 20px;
     width: 120px;
@@ -35,7 +35,7 @@ margin-top: 20px;
 }
 
 .cancel:hover {
-    background-color:rgb(255, 120, 96);
+    background-color: var(--deleteHover);
     cursor: pointer;
 }
 
