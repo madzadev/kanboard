@@ -6,7 +6,7 @@
 }
 
 .add {
-    background-color:rgb(218, 252, 218);
+    background-color:var(--add);
 }
 
 .edit {

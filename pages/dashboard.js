@@ -40,9 +40,9 @@ const Dashboard = () => {
         <div>
           <h1 className={styles.header}>My overview</h1>
           <div className={styles.stats}>
-            <StatsCard score={totalBoards.length} title="Total boards" />
-            <StatsCard score={totalColumns.length} title="Total columns" />
             <StatsCard score={totalPosts.length} title="Total tasks" />
+            <StatsCard score={totalColumns.length} title="Total columns" />
+            <StatsCard score={totalBoards.length} title="Total boards" />
           </div>
           <h1 className={styles.header}>Recent activity</h1>
           <div className={styles.activity}>

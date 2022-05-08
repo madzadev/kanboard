@@ -67,7 +67,7 @@
 }
 
 .add {
-    background-color:rgb(218, 252, 218);;
+    background-color:var(--add);
     border: none;
     padding: 10px 20px;
     width: 120px;
@@ -75,6 +75,6 @@
 }
 
 .add:hover {
-    background-color: rgb(188, 252, 188);
+    background-color: var(--addHover);
     cursor: pointer;
 }

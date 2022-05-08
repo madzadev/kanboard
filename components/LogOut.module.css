@@ -8,7 +8,7 @@
     background-color: rgb(255, 141, 121);
     border: none;
     border-radius: 5px;
-    border: 1px solid crimson;
+    /* border: 1px solid crimson; */
 }
 
 .button:hover {

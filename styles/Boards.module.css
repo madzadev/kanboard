@@ -65,15 +65,15 @@ gap: 20px;
 
 .add {
     padding: 5px 0;
-    background-color: rgb(218, 252, 218);
+    background-color: var(--add);
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
     text-align: center;
-    color: #10957d
+    color: var(--addText);
 }
 
 .add:hover {
-    background-color: rgb(188, 252, 188);
+    background-color: var(--addHover);
     cursor: pointer;
 }
 

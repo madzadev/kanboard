@@ -7,9 +7,13 @@
   font-family: 'Varela Round', sans-serif;
 }
 
+:root {
+  --add: rgb(218, 252, 218);
+  --addHover: rgb(188, 252, 188);
+  --addText: #10957d;
+}
 
 a {
-  color: inherit;
   text-decoration: none;
 }
 
