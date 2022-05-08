@@ -3,12 +3,12 @@
     grid-template-columns: auto 80px;
     gap: 20px;
     width: 100%;
-    
 }
 
 .buttons{
     display: grid;
-    grid-template-columns:1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    /* gap: 20px; */
 }
 
 .form {

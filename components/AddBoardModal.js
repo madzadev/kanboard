@@ -18,7 +18,6 @@ import styles from "./AddBoardModal.module.css";
 
 export default function AddBoardModal({ addBoardModalVisible }) {
   const [isOpen, setIsOpen] = useState(false);
-  //   const openModal = useCallback(() => setIsOpen(true), []);
   const closeModal = useCallback(() => setIsOpen(false), []);
   const router = useRouter();
 

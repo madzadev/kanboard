@@ -3,16 +3,28 @@
     text-align: center;
     padding: 10px 20px;
     margin-bottom: 15px;
+    /* box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px; */
+    cursor: pointer;
 }
 
 .add {
     background-color:var(--add);
+    color: var(--addText);
+    /* border: 1px solid var(--addHover); */
 }
 
 .edit {
     background-color: var(--edit);
+    color: var(--editText);
+    /* border: 1px solid var(--editHover); */
 }
 
 .delete {
     background-color:var(--delete);
+    color: var(--deleteText);
+    /* border: 1px solid var(--deleteHover); */
+}
+
+.time {
+    color: rgb(63, 63, 63);
 }

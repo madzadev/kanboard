@@ -1,5 +1,7 @@
 .wrapper {
     border-radius: 5px; 
+    /* background-color: #F5F4F7;
+    padding: 10px; */
 }
 
 .wrapper:hover {

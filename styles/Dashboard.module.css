@@ -6,6 +6,10 @@
 
 .header {
     margin: 20px 0;
+    background-color: white;
+    padding: 10px;
+    /* margin-bottom: 20px; */
+    border-radius: 5px;
 }
 
 .stats {

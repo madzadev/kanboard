@@ -28,7 +28,7 @@ const RecentActivityCard = ({ title, type, action, time }) => {
         {" a "}
         {type == 1 ? "board" : type == 2 ? "column" : "card"} "{title}"
       </h3>
-      <p>{dayjs(time).fromNow()}</p>
+      <p className={styles.time}>{dayjs(time).fromNow()}</p>
     </div>
   );
 };

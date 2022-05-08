@@ -32,6 +32,9 @@ const Calendar = () => {
         plugins={[dayGridPlugin]}
         initialView="dayGridMonth"
         events={events}
+        eventBackgroundColor="rgb(218, 252, 218)"
+        eventBorderColor="rgb(188, 252, 188)"
+        eventTextColor="#00614f"
         height="75vh"
       />
     </AuthWrapper>
