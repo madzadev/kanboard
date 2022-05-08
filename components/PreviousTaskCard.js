@@ -1,11 +1,11 @@
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 
-import styles from "./UpcomingTaskCard.module.css";
+import styles from "./PreviousTaskCard.module.css";
 
 dayjs.extend(relativeTime);
 
-const UpcomingTaskCard = ({ task, time }) => {
+const PreviousTaskCard = ({ task, time }) => {
   return (
     <div className={styles.wrapper}>
       <h3>{task}</h3>
@@ -14,4 +14,4 @@ const UpcomingTaskCard = ({ task, time }) => {
   );
 };
 
-export default UpcomingTaskCard;
+export default PreviousTaskCard;

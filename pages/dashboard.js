@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import AuthWrapper from "../components/AuthWrapper";
 import StatsCard from "../components/StatsCard";
 import UpcomingTaskCard from "../components/UpcomingTaskCard";
+import PreviousTaskCard from "../components/PreviousTaskCard";
 
 import { api } from "../appwrite";
 
@@ -12,7 +13,6 @@ const Dashboard = () => {
   const [totalBoards, setTotalBoards] = useState([]);
   const [totalColumns, setTotalColumns] = useState([]);
   const [totalPosts, setTotalPosts] = useState([]);
-  // const [events, setEvents] = useState();
 
   useEffect(() => {
     const getStats = async () => {
@@ -44,13 +44,30 @@ const Dashboard = () => {
           <h1 className={styles.header}>Recent activity</h1>
         </div>
         <div>
-          <h1 className={styles.header}>Upcoming tasks</h1>
+          <h1 className={styles.header}>🚀 Upcoming tasks</h1>
           {totalPosts
+            .filter((a) => a.due_date)
+            .filter((a) => new Date() < new Date(a.due_date))
             .sort((a, b) => new Date(a.due_date) - new Date(b.due_date))
-            .slice(0, 7)
+            .slice(0, 4)
             .map((post, index) => {
               return (
                 <UpcomingTaskCard
+                  key={index}
+                  task={post.title}
+                  time={post.due_date}
+                />
+              );
+            })}
+          <h1 className={styles.header}>✅ Previous tasks</h1>
+          {totalPosts
+            .filter((a) => a.due_date)
+            .filter((a) => new Date() > new Date(a.due_date))
+            .sort((a, b) => new Date(b.due_date) - new Date(a.due_date))
+            .slice(0, 4)
+            .map((post, index) => {
+              return (
+                <PreviousTaskCard
                   key={index}
                   task={post.title}
                   time={post.due_date}
