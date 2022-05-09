@@ -13,10 +13,10 @@
   --addText: #00614f;
   --edit: rgb(252, 244, 218);
   --editHover: rgb(252, 248, 188);
-  --editText: #2e1800;
-  --delete: rgb(255, 184, 172);
+  --editText: #9b5000;
+  --delete: rgb(255, 196, 185);
   --deleteHover: rgb(255, 159, 143);
-  --deleteText: rgb(83, 13, 0);
+  --deleteText: rgb(187, 28, 0);
 }
 
 a {

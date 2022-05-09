@@ -6,12 +6,13 @@
 
 .header {
     margin: 20px 0;
-    background-color: white;
+    /* background-color: white; */
     padding: 10px;
     /* margin-bottom: 20px; */
     border-radius: 5px;
-    background-color: var(--edit);
+    /* background-color: var(--edit); */
     /* border: 1px solid rgb(255, 215, 141); */
+    /* background-color: rgb(230, 230, 230); */
 }
 
 .stats {

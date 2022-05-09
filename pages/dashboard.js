@@ -40,9 +40,15 @@ const Dashboard = () => {
         <div>
           <h1 className={styles.header}>My overview</h1>
           <div className={styles.stats}>
-            <StatsCard score={totalPosts.length} title="Total tasks" />
-            <StatsCard score={totalColumns.length} title="Total columns" />
-            <StatsCard score={totalBoards.length} title="Total boards" />
+            {totalPosts.length && (
+              <StatsCard score={totalPosts.length} title="Total tasks" />
+            )}
+            {totalColumns.length && (
+              <StatsCard score={totalColumns.length} title="Total columns" />
+            )}
+            {totalBoards.length && (
+              <StatsCard score={totalBoards.length} title="Total boards" />
+            )}
           </div>
           <h1 className={styles.header}>Recent activity</h1>
           <div className={styles.activity}>

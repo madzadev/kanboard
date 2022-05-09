@@ -10,19 +10,19 @@
 .add {
     background-color:var(--add);
     /* color: var(--addText); */
-    background-color: white;
+    /* background-color: white; */
 }
 
 .edit {
     background-color: var(--edit);
     /* color: var(--editText); */
-    background-color: white;
+    /* background-color: white; */
 }
 
 .delete {
     background-color:var(--delete);
     /* color: var(--deleteText); */
-    background-color: white;
+    /* background-color: white; */
 }
 
 .time {

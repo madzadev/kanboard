@@ -46,7 +46,7 @@ export default function DeleteColumnModal({
       );
       await api.deleteBoard(id);
       closeModal();
-      if (boards.documents) {
+      if (boards.documents.length != 1) {
         window.location.href = `/board/${urlSlug(boards.documents[0].title)}`;
       } else {
         window.location.href = `/dashboard`;
