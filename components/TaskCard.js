@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { Draggable, resetServerContext } from "react-beautiful-dnd";
-import styles from "./TaskCard.module.css";
+import { Draggable } from "react-beautiful-dnd";
+import dayjs from "dayjs";
 import { api } from "../appwrite";
-import formatDDMMM from "../helpers/formatDDMMM";
+
+import styles from "./TaskCard.module.css";
 
 const TaskCard = ({ key, item, index, onClick }) => {
   const [activeCard, setActiveCard] = useState(0);
@@ -37,7 +38,9 @@ const TaskCard = ({ key, item, index, onClick }) => {
 
           <div className={styles.date}>
             <p>
-              <span>{item.due_date ? formatDDMMM(item.due_date) : ""}</span>
+              <span>
+                {item.due_date ? dayjs(item.due_date).format("DD MMM") : ""}
+              </span>
             </p>
           </div>
         </div>
