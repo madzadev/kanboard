@@ -1,4 +1,4 @@
-import { Appwrite, Query } from "appwrite";
+import { Appwrite, Query, limit } from "appwrite";
 
 const postsCollection = process.env.NEXT_PUBLIC_APPWRITE_POSTS_COLLECTION;
 const columnsCollection = process.env.NEXT_PUBLIC_APPWRITE_COLUMNS_COLLECTION;
@@ -67,6 +67,7 @@ export const api = {
   getPostsInColumn: (columnId) => {
     return sdk.database.listDocuments(postsCollection, [
       Query.equal("column_id", columnId),
+      Query.limit(100),
     ]);
   },
   getColumnsInBoard: (boardId) => {
@@ -75,7 +76,7 @@ export const api = {
     ]);
   },
   getAllPosts: () => {
-    return sdk.database.listDocuments(postsCollection);
+    return sdk.database.listDocuments(postsCollection, [], 100);
   },
   getAllColumns: () => {
     return sdk.database.listDocuments(columnsCollection);
