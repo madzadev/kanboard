@@ -149,7 +149,6 @@ const Boards = () => {
         },
       });
     }
-    console.log(destination);
     setActiveColumn(destination.droppableId);
   };
   return (
@@ -211,7 +210,6 @@ const Boards = () => {
                         <div
                           className={styles.add}
                           onClick={() => {
-                            console.log(column);
                             setAddCardModalVisible(!addCardModalVisible);
                             setActiveColumn(columnId);
                           }}

@@ -54,7 +54,6 @@ export default function ViewCardModal({ viewCardModalVisible, activeCard }) {
     const getCardData = async (id) => {
       try {
         const data = await api.getPost(id);
-        console.log(data);
         setCardData(data);
       } catch (err) {
         console.log(err.message);
