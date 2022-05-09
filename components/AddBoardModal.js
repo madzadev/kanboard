@@ -54,8 +54,6 @@ export default function AddBoardModal({ addBoardModalVisible }) {
 
   return (
     <div>
-      {/* <button onClick={openModal}>Open modal</button> */}
-
       <ModalTransition>
         {isOpen && (
           <Modal onClose={closeModal} className={styles.wrapper}>

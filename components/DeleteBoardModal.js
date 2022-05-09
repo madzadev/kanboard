@@ -1,6 +1,7 @@
 import { useCallback, useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
+import urlSlug from "url-slug";
 import { useRecoilState } from "recoil";
 import { boardState } from "../store/board";
 
@@ -34,6 +35,7 @@ export default function DeleteColumnModal({
   const onSubmit = async (id) => {
     try {
       const board = await api.getBoard(id);
+      const boards = await api.getAllBoards();
       await api.createActivity(
         JSON.stringify({
           title: board.title,
@@ -44,7 +46,12 @@ export default function DeleteColumnModal({
       );
       await api.deleteBoard(id);
       closeModal();
-      router.reload(window.location.pathname);
+      if (boards.documents) {
+        window.location.href = `/board/${urlSlug(boards.documents[0].title)}`;
+      } else {
+        window.location.href = `/dashboard`;
+      }
+      // router.reload(window.location.pathname);
     } catch (err) {
       console.log(err.message);
     }

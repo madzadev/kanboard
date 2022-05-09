@@ -70,7 +70,6 @@ const SideBar = () => {
                   onClick={() => {
                     setDeleteBoardModalVisible(!deleteBoardModalVisible);
                     setActiveBoard(board.$id);
-                    // router.reload(window.location.pathname);
                   }}
                 />
               )}
