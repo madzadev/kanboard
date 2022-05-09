@@ -51,7 +51,6 @@ export default function DeleteColumnModal({
       } else {
         window.location.href = `/dashboard`;
       }
-      // router.reload(window.location.pathname);
     } catch (err) {
       console.log(err.message);
     }

@@ -40,13 +40,13 @@ const Dashboard = () => {
         <div>
           <h1 className={styles.header}>My overview</h1>
           <div className={styles.stats}>
-            {totalPosts.length && (
-              <StatsCard score={totalPosts.length} title="Total tasks" />
+            {totalPosts.length != [] && (
+              <StatsCard score={totalPosts.length || ""} title="Total tasks" />
             )}
-            {totalColumns.length && (
+            {totalColumns.length != [] && (
               <StatsCard score={totalColumns.length} title="Total columns" />
             )}
-            {totalBoards.length && (
+            {totalBoards.length != [] && (
               <StatsCard score={totalBoards.length} title="Total boards" />
             )}
           </div>
