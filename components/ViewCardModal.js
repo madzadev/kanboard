@@ -194,7 +194,6 @@ export default function ViewCardModal({ viewCardModalVisible, activeCard }) {
               <ModalBody>
                 <p className={styles.title}>Title</p>
                 <p className={styles.value}>{cardData ? cardData.title : ""}</p>
-
                 <p className={styles.title}>Description</p>
                 <p className={`${styles.value} ${styles.textarea}`}>
                   {cardData ? cardData.description : ""}

@@ -1,7 +1,6 @@
-
 .form {
-    display:grid;
-margin-top: 20px;
+    display: grid;
+    margin-top: 20px;
 }
 
 .title {
@@ -9,16 +8,16 @@ margin-top: 20px;
 }
 
 .input {
-    height:40px;
+    height: 40px;
     margin-bottom: 10px;
     padding: 5px 20px;
     border-radius: 5px;
-    background-color:#F5F4F7 ; 
+    background-color: #F5F4F7;
     border: none;
 }
 
 .textarea {
-    min-height:150px;
+    min-height: 150px;
 }
 
 .error {
@@ -40,16 +39,15 @@ margin-top: 20px;
 }
 
 .add {
-    background-color:var(--add);
+    background-color: var(--add);
     border: none;
     padding: 10px 20px;
     width: 120px;
     border-radius: 5px;
-   
+
 }
 
 .add:hover {
     background-color: var(--addHover);
     cursor: pointer;
 }
-

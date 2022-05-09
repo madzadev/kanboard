@@ -5,14 +5,13 @@
     width: 100%;
 }
 
-.buttons{
+.buttons {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    /* gap: 20px; */
 }
 
 .form {
-    display:grid;
+    display: grid;
 }
 
 .title {
@@ -20,28 +19,28 @@
 }
 
 .value {
-    height:40px;
+    height: 40px;
     margin-bottom: 10px;
     padding: 10px 20px;
     border-radius: 5px;
-    background-color:#F5F4F7 ; 
+    background-color: #F5F4F7;
 }
 
 .input {
-    min-height:40px;
+    min-height: 40px;
     margin-bottom: 10px;
     padding: 5px 20px;
     border-radius: 5px;
-    background-color:#F5F4F7 ; 
+    background-color: #F5F4F7;
     border: none;
-    font-size:15px;
+    font-size: 15px;
 }
 
 .textarea {
-    min-height:150px;
+    min-height: 150px;
     vertical-align: top;
-    padding-top:15px;
-    font-size:15px;
+    padding-top: 15px;
+    font-size: 15px;
 }
 
 .error {
@@ -50,7 +49,7 @@
 }
 
 .cancel {
-    background-color:var(--delete);
+    background-color: var(--delete);
     border: none;
     padding: 10px 20px;
     width: 120px;
@@ -59,12 +58,12 @@
 }
 
 .cancel:hover {
-    background-color:var(--deleteHover);
+    background-color: var(--deleteHover);
     cursor: pointer;
 }
 
 .add {
-    background-color:var(--add);
+    background-color: var(--add);
     border: none;
     padding: 10px 20px;
     width: 120px;

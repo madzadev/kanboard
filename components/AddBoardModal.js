@@ -1,5 +1,3 @@
-// Test adding new board after refresh
-
 import { useCallback, useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
@@ -81,7 +79,6 @@ export default function AddBoardModal({ addBoardModalVisible }) {
                     Enter a valid description
                   </span>
                 )}
-                {/* <input type="submit" className={styles.submit} /> */}
                 <ModalFooter>
                   <button
                     onClick={(e) => {

@@ -15,7 +15,6 @@ import styles from "./AddCardModal.module.css";
 
 export default function AddCardModal({ addCardModalVisible, activeColumn }) {
   const [isOpen, setIsOpen] = useState(false);
-  //   const openModal = useCallback(() => setIsOpen(true), []);
   const closeModal = useCallback(() => setIsOpen(false), []);
   const router = useRouter();
 
@@ -54,8 +53,6 @@ export default function AddCardModal({ addCardModalVisible, activeColumn }) {
 
   return (
     <div>
-      {/* <button onClick={openModal}>Open modal</button> */}
-
       <ModalTransition>
         {isOpen && (
           <Modal onClose={closeModal} className={styles.wrapper}>
@@ -92,8 +89,6 @@ export default function AddCardModal({ addCardModalVisible, activeColumn }) {
                 {errors.due_date && (
                   <span className={styles.error}>Enter a valid due date</span>
                 )}
-
-                {/* <input type="submit" className={styles.submit} /> */}
                 <ModalFooter>
                   <button
                     onClick={(e) => {

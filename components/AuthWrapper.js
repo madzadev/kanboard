@@ -25,12 +25,10 @@ const AuthWrapper = ({ children }) => {
   return (
     <div className={styles.wrapper}>
       <Header />
-      {/* {`User is ${user}`} */}
       <div className={styles.content}>
         <SideBar />
         <Content>{children}</Content>
       </div>
-
       <Footer />
     </div>
   );

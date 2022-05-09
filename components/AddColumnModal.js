@@ -18,7 +18,6 @@ import styles from "./AddColumnModal.module.css";
 export default function AddColumnModal({ addColumnModalVisible }) {
   const [activeBoard, setActiveBoard] = useRecoilState(boardState);
   const [isOpen, setIsOpen] = useState(false);
-  //   const openModal = useCallback(() => setIsOpen(true), []);
   const closeModal = useCallback(() => setIsOpen(false), []);
   const router = useRouter();
 
@@ -55,8 +54,6 @@ export default function AddColumnModal({ addColumnModalVisible }) {
 
   return (
     <div>
-      {/* <button onClick={openModal}>Open modal</button> */}
-
       <ModalTransition>
         {isOpen && (
           <Modal onClose={closeModal} className={styles.wrapper}>
@@ -74,7 +71,6 @@ export default function AddColumnModal({ addColumnModalVisible }) {
                 {errors.title && (
                   <span className={styles.error}>Enter a valid title</span>
                 )}
-                {/* <input type="submit" className={styles.submit} /> */}
                 <ModalFooter>
                   <button
                     onClick={(e) => {

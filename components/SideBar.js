@@ -76,7 +76,6 @@ const SideBar = () => {
             </div>
           );
         })}
-
       <div
         className={styles.add}
         onClick={() => {
