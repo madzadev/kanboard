@@ -67,7 +67,7 @@ export const api = {
   getPostsInColumn: (columnId) => {
     return sdk.database.listDocuments(
       postsCollection,
-      [Query.equal("column_id", columnId), Query.limit(100)],
+      [Query.equal("column_id", columnId)],
       100
     );
   },
