@@ -65,26 +65,29 @@ export const api = {
     return sdk.database.createDocument(activitiesCollection, "unique()", data);
   },
   getPostsInColumn: (columnId) => {
-    return sdk.database.listDocuments(postsCollection, [
-      Query.equal("column_id", columnId),
-      Query.limit(100),
-    ]);
+    return sdk.database.listDocuments(
+      postsCollection,
+      [Query.equal("column_id", columnId), Query.limit(100)],
+      100
+    );
   },
   getColumnsInBoard: (boardId) => {
-    return sdk.database.listDocuments(columnsCollection, [
-      Query.equal("board_id", boardId),
-    ]);
+    return sdk.database.listDocuments(
+      columnsCollection,
+      [Query.equal("board_id", boardId)],
+      100
+    );
   },
   getAllPosts: () => {
     return sdk.database.listDocuments(postsCollection, [], 100);
   },
   getAllColumns: () => {
-    return sdk.database.listDocuments(columnsCollection);
+    return sdk.database.listDocuments(columnsCollection, [], 100);
   },
   getAllBoards: () => {
-    return sdk.database.listDocuments(boardsCollection);
+    return sdk.database.listDocuments(boardsCollection, [], 100);
   },
   getAllActivities: () => {
-    return sdk.database.listDocuments(activitiesCollection);
+    return sdk.database.listDocuments(activitiesCollection, [], 100);
   },
 };
