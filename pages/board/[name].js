@@ -21,7 +21,6 @@ import DeleteButton from "../../components/DeleteButton";
 import Search from "../../components/Search";
 
 import { api } from "../../appwrite";
-// import { columns1 } from "../data/kanban";
 import styles from "../../styles/Boards.module.css";
 
 const Boards = () => {

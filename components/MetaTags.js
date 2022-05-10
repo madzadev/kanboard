@@ -3,10 +3,10 @@ import Head from "next/head";
 const MetaTags = () => {
   return (
     <Head>
-      <title>KanBoard - Your Personal Kanban Management Tool</title>
+      <title>KanBoard - Your Personal Project Management Tool</title>
       <meta
         name="description"
-        content="KanBoard - Your Personal Kanban Management Tool"
+        content="KanBoard - Your Personal Project Management Tool"
       />
       <link rel="icon" href="/favicon.ico" />
     </Head>
