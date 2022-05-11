@@ -2,7 +2,7 @@
 
 Your Personal Project Management Tool
 
-![Cover]("/cover.png")
+![Cover](cover.png)
 
 ## Installation 📄
 
