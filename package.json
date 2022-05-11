@@ -24,6 +24,7 @@
     "react-dom": "18.0.0",
     "react-hook-form": "^7.30.0",
     "recoil": "^0.7.2",
+    "recoil-persist": "^4.1.0",
     "url-slug": "^3.0.3"
   },
   "devDependencies": {
