@@ -2,6 +2,8 @@
 
 Your Personal Project Management Tool
 
+![Cover]("/cover.png")
+
 ## Installation 📄
 
 In order to set up your own instance of KanBoard, you must first install Docker, set up Appwrite, create necessary data collections, clone the KanBoard repo, and configure environmental variables.
