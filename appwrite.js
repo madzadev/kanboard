@@ -16,7 +16,6 @@ export const api = {
     try {
       await sdk.account.createSession(mail, pass);
       const user = await api.getAccount();
-      console.log(`Got user: ${user.name}`);
       return user;
     } catch (error) {
       console.log(`No user found`);
