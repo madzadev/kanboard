@@ -1,12 +1,16 @@
+# Introducing KanBoard 🚀✨
+
+Your Personal Project Management Tool
+
 ## Installation 📄
 
-In order to set up your own instance of KanBoard, you must first install Docker, setup Appwrite, create necessary data collections, clone KanBoard repo and configure environmental variables.
+In order to set up your own instance of KanBoard, you must first install Docker, set up Appwrite, create necessary data collections, clone the KanBoard repo, and configure environmental variables.
 
-We will go through everything in more details below:
+We will go through everything in more detail below:
 
 1️⃣ To install [Docker](https://docker.com), check the official installation guidelines [here](https://docs.docker.com/get-docker/).
 
-2️⃣ Next, you have to install the [Appwrite](https://appwrite.io) using the commands below, depending of the operating system you use:
+2️⃣ Next, you have to install the [Appwrite](https://appwrite.io) using the commands below, depending on the operating system you use:
 
 - Mac / Linux or Unix compatible:
 
@@ -38,13 +42,13 @@ docker run -it --rm ,
     appwrite/appwrite:latest
 ```
 
-3️⃣ Next, open Docker and run the Appwrite app. At this point you should be able to access the Appwrite console through [localhost](http://localhost). Create an account, log in and create a new project.
+3️⃣ Next, open Docker and run the Appwrite app. At this point, you should be able to access the Appwrite console through [localhost](http://localhost). Create an account, log in and create a new project.
 
 ![Project](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/25tfvxw0dowvkfeen2xg.png)
 
 4️⃣ To init your SDK and interact with Appwrite services, you need to add a Web platform to your project. To do that choose the project you created and click the 'Add Platform' button.
 
-5️⃣ Create four database collections: Posts, Columns, Boards and Activities.
+5️⃣ Create four database collections: Posts, Columns, Boards, and Activities.
 
 ![Colections](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ctwjhu525coft3pvtai6.png)
 
@@ -74,10 +78,10 @@ Now set the attributes and indexes for each collection as below:
 
 ![Permissions](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/6q0a10ka1y70fgr3sh2g.png)
 
-7️⃣ Navigate to the Users panel and add a new user you will use to log in you app and access KanBoard.
+7️⃣ Navigate to the Users panel and add a new user you will use to log in to your app and access KanBoard.
 
 8️⃣ Clone the repo to your machine by running `git clone https://github.com/madzadev/kanboard.git` then change the working directory into it by `cd kanboard` and install the project packages by `npm install`.
 
-9️⃣ Clone the env files with the command `cp .env.example .env.local`. In the newly created `.env.local` file fill out the keys from your Appwrite console. First two are available in the Settings of KanBan project. The other four can be found in the Settings of each Collection.
+9️⃣ Clone the env files with the command `cp .env.example .env.local`. In the newly created `.env.local` file fill out the keys from your Appwrite console. The first two are available in the Settings of the KanBan project. The other four can be found in the Settings of each Collection.
 
 1️⃣0️⃣ Run the command `npm run dev` to start the app.
