@@ -2,7 +2,7 @@
 
 Your Personal Project Management Tool
 
-![Cover](cover.png)
+![Cover](https://github.com/madzadev/kanboard/blob/main/public/cover.png)
 
 ## Installation 📄
 
