@@ -87,3 +87,9 @@ Now set the attributes and indexes for each collection as below:
 9️⃣ Clone the env files with the command `cp .env.example .env.local`. In the newly created `.env.local` file fill out the keys from your Appwrite console. The first two are available in the Settings of the KanBan project. The other four can be found in the Settings of each Collection.
 
 1️⃣0️⃣ Run the command `npm run dev` to start the app.
+
+## License 📃
+
+[KanBoard](https://github.com/madzadev/kanboard) is an open-source project with [MIT license](https://choosealicense.com/licenses/mit/).
+
+The pull requests are welcome.
