@@ -1,4 +1,4 @@
-import { Appwrite, Query, limit } from "appwrite";
+import { Appwrite, Query } from "appwrite";
 
 const postsCollection = process.env.NEXT_PUBLIC_APPWRITE_POSTS_COLLECTION;
 const columnsCollection = process.env.NEXT_PUBLIC_APPWRITE_COLUMNS_COLLECTION;
