@@ -78,7 +78,7 @@ Now set the attributes and indexes for each collection as below:
 
 6️⃣ Go into the settings for each collection and set the permission to `role:member` for both read and write access.
 
-![Permissions](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/6q0a10ka1y70fgr3sh2g.png)
+![Permissions](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/6r3x5jluamup8merje4f.png)
 
 7️⃣ Navigate to the Users panel and add a new user you will use to log in to your app and access KanBoard.
 
