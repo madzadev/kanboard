@@ -2,8 +2,6 @@ import { useCallback, useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import urlSlug from "url-slug";
-import { useRecoilState } from "recoil";
-import { boardState } from "../store/board";
 
 import Modal, {
   ModalBody,
@@ -14,7 +12,7 @@ import Modal, {
 } from "@atlaskit/modal-dialog";
 import { api } from "../appwrite";
 
-import styles from "./AddColumnModal.module.css";
+import styles from "./DeleteBoardModal.module.css";
 
 export default function DeleteColumnModal({
   deleteBoardModalVisible,
