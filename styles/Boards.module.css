@@ -1,13 +1,13 @@
 .wrapper {
-    display: flex;
-    overflow-x: auto;
-    width: calc(100vw - 370px);
+  display: flex;
+  overflow-x: auto;
+  width: calc(100vw - 370px);
 }
 
 .header {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
 
 }
 
@@ -18,11 +18,11 @@ gap: 20px;
 
 .new {
   padding: 5px 0;
-    background-color: var(--edit);
-    border-radius: 5px;
-    box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
-    text-align: center;
-    color: var(--editText);
+  background-color: var(--edit);
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+  text-align: center;
+  color: var(--editText);
   height: 30px;
   width: 300px;
   margin-top: 44px;
@@ -34,7 +34,7 @@ gap: 20px;
 }
 
 .column {
-    margin: 8px;
+  margin: 8px;
   display: flex;
 }
 
@@ -49,13 +49,13 @@ gap: 20px;
 }
 
 .head {
-    display: grid;
-    grid-template-columns: 10fr 1fr 1fr;
-    gap: 20px;
-    margin-bottom:10px;
-    position: sticky;
-    top:0px;
-    place-items: center start;
+  display: grid;
+  grid-template-columns: 10fr 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 10px;
+  position: sticky;
+  top: 0px;
+  place-items: center start;
 }
 
 .title {
@@ -63,23 +63,23 @@ gap: 20px;
 }
 
 .add {
-    padding: 5px 0;
-    background-color: var(--add);
-    border-radius: 5px;
-    box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
-    text-align: center;
-    color: var(--addText);
-    max-width: 310px;
+  padding: 5px 0;
+  background-color: var(--add);
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+  text-align: center;
+  color: var(--addText);
+  max-width: 310px;
 }
 
 .add:hover {
-    background-color: var(--addHover);
-    cursor: pointer;
+  background-color: var(--addHover);
+  cursor: pointer;
 }
 
 .cardsWrapper {
   overflow-y: auto;
-  margin-top:20px;
+  margin-top: 20px;
 }
 
 .cardsWrapper::-webkit-scrollbar {
@@ -93,17 +93,20 @@ gap: 20px;
 }
 
 /* Track */
-.cardsWrapper::-webkit-scrollbar-track, .wrapper::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 3px #F5F4F7; 
+.cardsWrapper::-webkit-scrollbar-track,
+.wrapper::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 3px #F5F4F7;
 }
- 
+
 /* Handle */
-.cardsWrapper::-webkit-scrollbar-thumb, .wrapper::-webkit-scrollbar-thumb {
-  background: rgb(255, 255, 255); 
+.cardsWrapper::-webkit-scrollbar-thumb,
+.wrapper::-webkit-scrollbar-thumb {
+  background: rgb(255, 255, 255);
   border-radius: 3px;
 }
 
 /* Handle on hover */
-.cardsWrapper::-webkit-scrollbar-thumb:hover, .wrapper::-webkit-scrollbar-thumb:hover {
+.cardsWrapper::-webkit-scrollbar-thumb:hover,
+.wrapper::-webkit-scrollbar-thumb:hover {
   background: #fafafa;
 }

@@ -1,18 +1,13 @@
 .wrapper {
-    display:grid;
+    display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 70px;
 }
 
 .header {
     margin: 20px 0;
-    /* background-color: white; */
     padding: 10px;
-    /* margin-bottom: 20px; */
     border-radius: 5px;
-    /* background-color: var(--edit); */
-    /* border: 1px solid rgb(255, 215, 141); */
-    /* background-color: rgb(230, 230, 230); */
 }
 
 .stats {
